@@ -13,9 +13,9 @@ TRUNCATE TABLE usuario CASCADE;
 
 -- Insert Usuarios
 INSERT INTO usuario (nombre, correo, contrasena, rol) VALUES
-('Administrador Galaga', 'admin@galaga.com', '$2a$10$8.UnVuG9HHgffUDAlk8GP.35GL7H1YV.eC6bM4j6lF7d1/eHlZ3wO', 'ADMIN'),
-('Coordinador Logistico', 'coordinador@galaga.com', '$2a$10$8.UnVuG9HHgffUDAlk8GP.35GL7H1YV.eC6bM4j6lF7d1/eHlZ3wO', 'COORDINADOR'),
-('Conductor Principal', 'conductor@galaga.com', '$2a$10$8.UnVuG9HHgffUDAlk8GP.35GL7H1YV.eC6bM4j6lF7d1/eHlZ3wO', 'CONDUCTOR');
+('Administrador Galaga', 'admin@galaga.com', '$2a$10$./PobD9PleH1cpyafdO4M.kXi4LqJC/UQ4630BbhrcBjb39rl/NP2', 'ADMIN'),
+('Coordinador Logistico', 'coordinador@galaga.com', '$2a$10$./PobD9PleH1cpyafdO4M.kXi4LqJC/UQ4630BbhrcBjb39rl/NP2', 'COORDINADOR'),
+('Conductor Principal', 'conductor@galaga.com', '$2a$10$./PobD9PleH1cpyafdO4M.kXi4LqJC/UQ4630BbhrcBjb39rl/NP2', 'CONDUCTOR');
 
 -- Insert Operadores
 INSERT INTO operador (nombre, telefono) VALUES
