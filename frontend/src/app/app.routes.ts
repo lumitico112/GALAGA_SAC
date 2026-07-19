@@ -9,6 +9,7 @@ import { ContratosComponent } from './components/contratos/contratos.component';
 import { MantenimientosComponent } from './components/mantenimientos/mantenimientos.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { EntregaComponent } from './components/entrega/entrega.component';
 import { authGuard, roleGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
