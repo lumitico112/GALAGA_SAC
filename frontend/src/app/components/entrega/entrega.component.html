@@ -1,0 +1,70 @@
+<app-layout>
+        <header class="content-header">
+          <div>
+            <h1>Confirmación de Entrega</h1>
+            <p class="subtitle">Cierre de despacho y registro de evidencias de recepción de material</p>
+          </div>
+        </header>
+
+        <div class="flota-grid">
+          <!-- Confirm Delivery Form -->
+          <section class="glass-panel form-section">
+            <h2>Registrar Entrega</h2>
+            <form (ngSubmit)="onConfirmar()" #entregaForm="ngForm" class="route-form">
+              <div class="form-group">
+                <label for="ruta">Ruta en Tránsito</label>
+                <select id="ruta" name="ruta" [(ngModel)]="selectedRutaId" required>
+                  <option value="" disabled selected>Seleccione la ruta...</option>
+                  <option *ngFor="let r of rutasEnTransito" [value]="r.idRuta">
+                    Ruta #{{ r.idRuta }} - Destino: {{ r.destino }} (Placa: {{ r.vehiculo?.placa }})
+                  </option>
+                </select>
+                <p *ngIf="rutasEnTransito.length === 0" class="warning-text">No hay rutas activas en tránsito actualmente.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="observacion">Observaciones / Evidencia</label>
+                <textarea id="observacion" name="observacion" [(ngModel)]="observacion" rows="4" placeholder="Ej. Material recibido conforme por el representante de la ONPE, sin novedades..."></textarea>
+              </div>
+
+              <button type="submit" [disabled]="entregaForm.invalid" class="btn-primary w-full">
+                Confirmar y Finalizar Ruta
+              </button>
+            </form>
+          </section>
+
+          <!-- Delivery List -->
+          <section class="glass-panel list-section">
+            <h2>Historial de Entregas</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Fecha/Hora</th>
+                    <th>Ruta ID</th>
+                    <th>Destino</th>
+                    <th>Vehículo</th>
+                    <th>Observación</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of entregas">
+                    <td>{{ e.fechaEntrega | date:'dd/MM/yyyy HH:mm' }}</td>
+                    <td>#{{ e.ruta?.idRuta }}</td>
+                    <td>{{ e.ruta?.destino }}</td>
+                    <td>{{ e.ruta?.vehiculo?.placa }}</td>
+                    <td>{{ e.observacion || 'Sin observaciones' }}</td>
+                    <td>
+                      <span class="badge badge-available">{{ e.estado }}</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="entregas.length === 0">
+                    <td colspan="6" class="empty-msg">No se han registrado entregas aún.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </app-layout>

@@ -1,0 +1,68 @@
+<app-layout>
+        <header class="content-header">
+          <div>
+            <h1>Conductores</h1>
+            <p class="subtitle">Administración de personal operativo asignado a las rutas electorales</p>
+          </div>
+        </header>
+
+        <div class="flota-grid">
+          <!-- Register Driver Form -->
+          <section class="glass-panel form-section">
+            <h2>Registrar Conductor</h2>
+            <form (ngSubmit)="onRegistrar()" #conductorForm="ngForm" class="route-form">
+              <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required placeholder="Ej. Juan Pérez">
+              </div>
+
+              <div class="form-group">
+                <label for="licencia">Número de Licencia</label>
+                <input type="text" id="licencia" name="licencia" [(ngModel)]="licencia" required placeholder="Ej. Q-12345678">
+              </div>
+
+              <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="text" id="telefono" name="telefono" [(ngModel)]="telefono" placeholder="Ej. 987654321">
+              </div>
+
+              <button type="submit" [disabled]="conductorForm.invalid" class="btn-primary w-full">
+                Registrar Conductor
+              </button>
+            </form>
+          </section>
+
+          <!-- Driver List -->
+          <section class="glass-panel list-section">
+            <h2>Personal Registrado</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Licencia</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let c of conductores">
+                    <td><strong>{{ c.nombre }}</strong></td>
+                    <td>{{ c.licencia }}</td>
+                    <td>{{ c.telefono || 'Ninguno' }}</td>
+                    <td>
+                      <span class="badge" [ngClass]="{
+                        'badge-available': c.estado === 'Disponible',
+                        'badge-busy': c.estado === 'Ocupado'
+                      }">{{ c.estado }}</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="conductores.length === 0">
+                    <td colspan="4" class="empty-msg">No hay conductores registrados.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </app-layout>

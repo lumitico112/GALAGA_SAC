@@ -1,0 +1,2766 @@
+UNIVERSIDAD TECNOLÓGICA DEL PERÚ
+FACULTAD DE INGENIERÍA
+CURSO: Análisis de Sistemas de
+Información
+
+AVANCE DE PROYECTO FINAL 3 (APF3)
+"Proyecto de Análisis: Servicios Generales Galaga S.A.C. - Contratos y Operaciones
+con ONPE"
+
+DOCENTE: EDUARDO MARTIN REYES RODRIGUEZ
+
+INTEGRANTES:
+Tirabantes Córdova, Luis Miguel
+
+U17607151
+
+Guevara Alhuay, Vladimir Gonzalo
+
+1637253
+
+Sánchez Hidalgo, Rubi Massiel
+
+U22249199
+
+Bravo Arellano, Diego Alejandro
+
+U23263007
+
+Malca Palacios, Jairo Lionel
+
+U23225403
+
+Lima -Perú
+2026
+
+INDICE
+INTRODUCCIÓN .......................................................................... 4
+JUSTIFICACIÓN .......................................................................... 5
+OBJETIVOS GENERALES Y ESPECÍFICOS ............................................. 5
+Objetivo General ..................................................................... 5
+Objetivos Específicos ............................................................... 5
+ASPECTOS DE LA ORGANIZACIÓN ................................................. 5
+VISIÓN ..................................................................................... 6
+MISIÓN .................................................................................... 6
+DESCRIPCIÓN DE LA EMPRESA ........................................................ 6
+1.
+
+ÁMBITO DEL PROYECTO ........................................................ 6
+1.1.
+
+Área (donde se va a aplicar el Proyecto)............................... 6
+
+1.2.
+
+Recursos Humanos para la elaboración del Proyecto ................ 7
+
+1.3.
+
+Software (Necesario para el Proyecto) ................................. 7
+
+1.4
+
+Hardware (Necesario para el Proyecto) ................................ 8
+
+1.4.
+
+Cronograma de Actividades ............................................... 9
+
+2
+
+FASE DE INICIO ................................................................. 11
+2.1Modelado del Negocio......................................................... 11
+1.1.1
+
+Modelado del Proceso de Negocio ................................... 11
+
+1.1.2
+
+Modelo de Análisis del negocio ..................................... 12
+
+1.1.3
+
+Recopilación de los requerimientos .............................. 14
+
+2.2Matriz de requerimientos .................................................... 16
+3
+
+FASE DE ELABORACIÓN ....................................................... 19
+3.1
+
+Casos de Usos .............................................................. 19
+
+3.2
+
+Especificaciones del caso de Uso ...................................... 21
+
+3.3
+
+Análisis del Sistema ...................................................... 21
+
+3.3.1
+
+Paquete de Análisis ................................................... 22
+
+3.3.2
+
+Clases de Entidad...................................................... 25
+
+3.3.3
+
+Realizaciones de Caso de Uso ....................................... 29
+
+3.3.4
+
+Diagrama de comunicación .......................................... 30
+
+3.3.5
+
+Diagrama de secuencia ............................................... 30
+
+3.4
+
+Modelo conceptual o Diagrama de clase ............................. 31
+
+3.5
+
+Modelo Lógico ............................................................. 33
+
+3.6
+
+Modelo Físico .............................................................. 36
+
+3.7
+
+Tarjeta CRC de cada clase .............................................. 38
+
+3.8
+
+Diseño del sistema ....................................................... 40
+
+3.8.1
+
+Patrón de Diseño ...................................................... 40
+
+3.8.2
+
+Diagrama de Estructura Compuesta................................ 43
+
+3.8.3
+
+Diagrama de Tiempo .................................................. 44
+
+3.8.4
+
+Diagrama de Despliegue .............................................. 45
+
+3.8.5
+
+Diagrama de Componentes .......................................... 47
+
+INTRODUCCIÓN
+En la actualidad, la gestión eficiente de la información y la automatización
+de procesos se han convertido en pilares fundamentales para garantizar la
+operatividad y competitividad de las empresas logísticas, especialmente aquellas
+encargadas de gestionar altos volúmenes de distribución a nivel nacional. En este
+contexto, el presente proyecto de Análisis de Sistemas de Información tiene como
+foco de estudio a la empresa Servicios Generales Galaga S.A.C., una organización
+dedicada al transporte de carga y servicios logísticos que mantiene un rol crítico
+como proveedor estratégico del Estado, destacando su participación en el despliegue y
+repliegue de material sensible para la Oficina Nacional de Procesos Electorales
+(ONPE).
+No obstante, la magnitud, complejidad y exigencia de los procesos electorales
+recientes han puesto a prueba la capacidad operativa instalada de la organización.
+Durante los comicios generales de abril de 2026, se evidenciaron deficiencias
+estructurales significativas en la planificación operativa, la asignación dinámica de
+recursos y el monitoreo de la flota en tiempo real. Como resultado directo de la
+carencia de un sistema de información centralizado que brinde soporte a la toma de
+decisiones, la empresa experimentó cuellos de botella severos que derivaron en el
+incumplimiento de los cronogramas de entrega en múltiples centros de votación,
+afectando directamente la cadena de suministro electoral.
+Por consiguiente, este documento desarrolla un análisis exhaustivo del
+modelo de negocio actual con el propósito de identificar con precisión los
+requerimientos informáticos, funcionales y no funcionales que la organización
+demanda para mitigar sus vulnerabilidades. A través de la aplicación de
+metodologías formales de análisis de sistemas, se llevará a cabo el modelado
+detallado de los procesos internos, la definición de los actores del negocio y una
+rigurosa recopilación de datos mediante el levantamiento de información in situ. De
+este modo, se busca mapear la arquitectura empresarial vigente para diagnosticar las
+causas raíz de las fallas en el flujo de la información.
+Finalmente, y en estricta alineación con los principios de Responsabilidad
+Social Universitaria (RSU) exigidos por la institución, este análisis trasciende el
+ámbito académico al abordar una problemática real con proyección de impacto a
+nivel nacional. En tal sentido, la correcta delimitación de los requerimientos del
+sistema sentará las bases lógicas para el futuro diseño de una arquitectura
+tecnológica escalable; una solución que permitirá a Galaga S.A.C. optimizar sus
+operaciones, garantizar el cumplimiento de sus obligaciones contractuales y, en
+última instancia, aportar a la transparencia y eficiencia logística que sostienen los
+procesos democráticos del país.
+
+JUSTIFICACIÓN
+El presente proyecto se justifica por la necesidad de resolver las deficiencias
+tecnológicas y operativas de la empresa Servicios Generales Galaga S.A.C.,
+evidenciadas durante el despliegue logístico para la ONPE en abril de 2026. La
+carencia de sistemas de información para la planificación de recursos y el monitoreo
+de flota provocó retrasos críticos en la entrega de materiales en múltiples centros
+de sufragio.
+Desde una perspectiva práctica, el análisis aportará un diagnóstico preciso
+de los procesos actuales, el modelado estructurado del negocio y una matriz de
+requerimientos informáticos. Estos entregables proporcionarán los cimientos lógicos y
+funcionales para la futura implementación de un sistema que automatice la
+asignación de vehículos, emita alertas tempranas y optimice el control de
+incidencias en tiempo real.
+Finalmente, en alineación con los requerimientos de Responsabilidad Social
+Universitaria (RSU), el estudio beneficiará directamente a Galaga S.A.C. al escalar su
+capacidad y mitigar penalizaciones contractuales. A nivel institucional y social,
+beneficiará a entidades del Estado como la ONPE y a la ciudadanía, al garantizar la
+eficiencia, puntualidad y transparencia de la cadena logística que sostiene los
+procesos democráticos a nivel nacional.
+
+OBJETIVOS GENERALES Y ESPECÍFICOS
+Objetivo General
+Analizar los procesos logísticos de Servicios Generales Galaga S.A.C. para
+definir sus requerimientos informáticos y fundamentar el diseño de un sistema de
+información que optimice sus operaciones.
+
+Objetivos Específicos
+1. Diagnosticar la situación actual de los procesos operativos y de transporte de
+la empresa para identificar cuellos de botella y vulnerabilidades.
+2. Modelar la arquitectura del negocio definiendo con precisión los actores,
+casos de uso y reglas organizacionales.
+3. Recopilar y documentar los requerimientos funcionales y no funcionales del
+sistema mediante técnicas de levantamiento de información.
+4. Diseñar los modelos lógicos y conceptuales que servirán como base
+arquitectónica para la futura solución tecnológica.
+
+ASPECTOS DE LA ORGANIZACIÓN
+•
+
+Nombre Legal: Servicios Generales Galaga S.A.C.
+
+•
+
+Sector: Logística, Transporte de Carga, Almacenaje y Distribución.
+
+•
+
+Año de Fundación: 2010.
+
+•
+
+Ubicación Principal: Av. Canto Grande Mz. J Lote. 30 urb. Los Álamos - San
+Juan de Lurigancho, Lima.
+
+•
+
+Infraestructura Estratégica: Cuenta con instalaciones de 3,000 m² en
+Jicamarca, 2,500 m² en Lurín, y bases operativas en Arequipa, Chiclayo e
+Iquitos (adaptadas para almacenaje tipo A, B y C).
+
+•
+
+Flota: Más de 50 unidades especializadas (furgones cerrados de 10 m³ a 90
+m³, plataformas y cisternas) equipadas con rastreo satelital.
+
+•
+
+Certificaciones: Evaluación de seguridad por SGS y cumplimiento normativo del MTC.
+
+VISIÓN
+Ser la empresa de soluciones logísticas integrales líder y de mayor
+confiabilidad en el Perú, reconocida por su cobertura nacional, su innovación
+tecnológica y su capacidad para garantizar el éxito en las operaciones de
+cadenas de suministro críticas y de gran envergadura.
+
+MISIÓN
+Proporcionar un servicio de logística y transporte eficiente, adaptado a las
+necesidades específicas de cada cliente, manteniendo un firme compromiso con
+la puntualidad, la seguridad y la calidad. Buscamos asegurar el cumplimiento
+riguroso de los estándares de salud y cuidado del medio ambiente a través de
+un equipo de colaboradores altamente capacitado.
+
+DESCRIPCIÓN DE LA EMPRESA
+Servicios Generales Galaga S.A.C. es una organización peruana fundada en el
+año 2010, dedicada a brindar soluciones logísticas integrales a nivel nacional.
+Con más de una década de experiencia en el mercado, la empresa se especializa
+en cinco líneas de negocio principales: transporte de carga exclusiva, traslado de
+equipos tecnológicos, transporte de mercadería general, servicios de
+almacenaje y distribución de última milla.
+A lo largo de su trayectoria, Galaga S.A.C. ha demostrado capacidad
+operativa para atender a sectores críticos y altamente exigentes, incluyendo el
+sector minero (Antamina, Cerro Verde), retail y consumo masivo
+(Supermercados Peruanos, Tottus, Aje), así como el sector público. Destaca su
+participación como proveedor estratégico del Estado, brindando soporte
+logístico seguro al Ministerio de Educación (MINEDU) y gestionando el
+transporte, despliegue y repliegue de material electoral para la Oficina Nacional
+de Procesos Electorales (ONPE).
+
+1. ÁMBITO DEL PROYECTO
+1.1.
+
+Área (donde se va a aplicar el Proyecto)
+
+El proyecto se circunscribe funcionalmente a la Gerencia de Operaciones y
+Logística de Servicios Generales Galaga S.A.C. Esta unidad administrativa y
+operativa es la responsable directa de la planificación técnica, la asignación de la
+flota vehicular y el monitoreo de las rutas de distribución a nivel nacional.
+En términos específicos, el estudio se focaliza en los procesos de gestión de
+transporte de carga exclusiva y equipos tecnológicos, con especial énfasis en el
+flujo de información
+
+derivado de las relaciones contractuales con la Oficina Nacional de Procesos
+Electorales (ONPE). El análisis abarca desde la sede principal de la empresa,
+ubicada en el distrito de San Juan de Lurigancho, hasta la ejecución logística en
+Lima Metropolitana y los principales nodos de distribución nacional vinculados a
+la cadena de suministro electoral
+
+1.2.
+
+Recursos Humanos para la elaboración del Proyecto
+
+Para el desarrollo integral del presente análisis, el equipo de trabajo se ha
+organizado bajo una estructura de cinco integrantes, asignando roles
+especializados que permiten un abordaje exhaustivo de la problemática
+operativa de Servicios Generales Galaga S.A.C.
+Responsabilidades
+Dedicación
+
+Rol
+Project
+
+Dirección estratégica del proyecto, control de hitos
+
+Manager
+
+críticos, supervisión del cronograma y coordinación
+
+100%
+
+general entre las fases de análisis y diseño.
+Analista
+
+de
+
+Ejecución del levantamiento de información,
+
+Procesos
+
+de
+
+identificación de la cadena de valor y modelado
+
+Negocio
+
+80%
+
+detallado de los procesos actuales (AS-IS) de la
+organización.
+
+Analista
+
+de
+
+Responsable de la elicitación, especificación y
+
+Requerimientos
+
+validación de los requerimientos funcionales y no
+
+Informáticos
+
+funcionales necesarios para la solución tecnológica.
+
+Arquitecto
+
+de
+
+Definición de la infraestructura técnica, diseño de
+
+Soluciones
+
+modelos lógicos y conceptuales, y estructuración
+
+Tecnológicas
+
+de la arquitectura de datos del sistema propuesto.
+
+Especialista en
+
+Validación técnica de los procesos operativos
+
+Control
+
+logísticos y aseguramiento de la calidad y
+
+y
+
+Calidad
+
+80%
+
+70%
+
+consistencia de todos los entregables del análisis
+de sistemas.
+
+1.3.
+
+Software (Necesario para el Proyecto)
+
+Para la ejecución del proyecto, se han identificado dos categorías de software
+esenciales: herramientas de soporte para el análisis y el ecosistema tecnológico
+de la solución propuesta.
+Herramientas de Análisis y Modelado:
+•
+
+Gestión y Planificación: Project Libre para el control de hitos y
+cronograma de actividades.
+
+•
+
+Modelado de Sistemas: Lucidchart o StarUML para la creación de diagramas
+de casos de uso, procesos de negocio y diagramas de arquitectura.
+
+•
+
+Documentación y Colaboración: Microsoft Word para la redacción del
+informe técnico bajo normas APA y Google Drive para el almacenamiento
+centralizado de entregables.
+
+•
+
+Análisis de Datos: Microsoft Excel y SQL Server para el prototipado y
+análisis de las estructuras de datos operativas.
+
+Ecosistema Tecnológico de la Solución (Arquitectura Propuesta):
+•
+
+Backend: Java con el framework Spring Boot 3.x, proporcionando una base
+robusta y escalable para la lógica logística.
+
+•
+
+Frontend: Angular para el desarrollo de una interfaz administrativa dinámica
+que permita el monitoreo en tiempo real.
+
+•
+
+Base de Datos: PostgreSQL para la gestión persistente de rutas, flota y
+estados de entrega.
+
+•
+
+Geolocalización: Integración con API de Google Maps para el rastreo satelital
+de las unidades.
+
+•
+
+Estaciones de Trabajo: Cinco laptops con procesadores de alto rendimiento
+(mínimo Core i5 o superior) y 16GB de RAM para garantizar la fluidez en el
+modelado y desarrollo.
+
+•
+
+Periféricos: Impresoras y escáneres para la digitalización de documentos
+contractuales y reportes de la ONPE.
+
+•
+
+Servidor de Aplicaciones y Datos: Servidor físico o instancia en la nube
+(AWS/Azure) para el despliegue del sistema y la base de datos.
+
+•
+
+Dispositivos de Campo: Equipos de comunicación móvil (tablets o
+smartphones) para que los conductores de las más de 50 unidades reporten
+entregas e incidencias en tiempo real.
+
+•
+
+Hardware de Red: Routers y switches de grado empresarial para garantizar
+la conectividad constante en la sede de San Juan de Lurigancho.
+
+•
+
+Sistemas de Rastreo: Dispositivos GPS instalados en la flota para el envío de
+coordenadas al sistema centralizado.
+
+1.4 Hardware (Necesario para el Proyecto)
+El hardware requerido abarca los dispositivos necesarios para el equipo
+consultor y la infraestructura mínima para la operatividad de la solución en
+Galaga S.A.C.
+Recursos para el Equipo de Análisis:
+•
+
+Estaciones de Trabajo: Cinco laptops con procesadores de alto rendimiento
+(mínimo Core i5 o superior) y 16GB de RAM para garantizar la fluidez en el
+modelado y desarrollo.
+
+•
+
+Periféricos: Impresoras y escáneres para la digitalización de documentos
+contractuales y reportes de la ONPE.
+
+Infraestructura Operativa para la Empresa:
+•
+
+Servidor de Aplicaciones y Datos: Servidor físico o instancia en la nube
+(AWS/Azure) para el despliegue del sistema y la base de datos.
+
+•
+
+Dispositivos de Campo: Equipos de comunicación móvil (tablets o
+smartphones) para que los conductores de las más de 50 unidades reporten
+entregas e incidencias en tiempo real.
+
+•
+
+Hardware de Red: Routers y switches de grado empresarial para garantizar
+la conectividad constante en la sede de San Juan de Lurigancho.
+
+•
+
+Sistemas de Rastreo: Dispositivos GPS instalados en la flota para el envío de
+coordenadas al sistema centralizado.
+
+1.4.
+
+Cronograma de Actividades
+
+2
+
+FASE DE INICIO
+
+2.1 Modelado del Negocio
+El modelado del negocio tiene como objetivo representar la estructura y los
+procesos clave de Servicios Generales Galaga S.A.C., permitiendo una
+comprensión clara de sus objetivos, actividades y los recursos necesarios para
+alcanzarlos. Este modelo será esencial para el diseño de un sistema que
+optimice las operaciones de la empresa.
+
+1.1.1 Modelado del Proceso de Negocio
+El modelado de procesos de negocio se enfoca en representar cómo se llevan a
+cabo las actividades dentro de la organización para cumplir con sus objetivos. En
+este caso, los procesos logísticos y de distribución de material electoral para la
+ONPE
+son
+clave
+
+1.1.2 Modelo de Análisis del negocio
+El modelo de análisis del negocio busca identificar los aspectos clave de la organización y
+los requerimientos que deben ser cubiertos por un sistema para mejorar la eficiencia
+operativa.
+En el caso de Servicios Generales Galaga S.A.C., el modelo de negocio debe
+abordar las siguientes áreas clave:
+
+1.1.3 Recopilación de los requerimientos (Entrevista, cuestionario, observación)
+- Entrevista:
+Descripción:
+Se realizó una entrevista simulada al Gerente de Operaciones con el objetivo de
+comprender el proceso de distribución y los principales problemas que se
+presentan.
+Preguntas y Respuestas:
+•
+
+¿Cómo inicia el proceso de distribución?
+Inicia con la planificación de rutas y asignación de vehículos.
+
+•
+
+¿Qué problemas ocurren con frecuencia?
+Retrasos en la entrega, fallas mecánicas y falta de vehículos disponibles.
+
+•
+
+¿Cómo se comunican las incidencias?
+Mediante llamadas telefónicas y aplicaciones de mensajería como WhatsApp.
+
+•
+
+¿Qué es lo más importante del proceso?
+Cumplir con los tiempos de entrega establecidos por la ONPE.
+
+Cuestionario:
+Descripción:
+Se diseñó un cuestionario dirigido al personal operativo con el fin de identificar
+dificultades y oportunidades de mejora en el proceso.
+
+Formato del Cuestionario:
+1.
+
+¿Cuenta con suficiente información antes de iniciar la ruta?
+☐ Sí ☐ No
+
+2.
+
+¿Ha tenido problemas durante la distribución?
+☐ Sí ☐ No
+
+3.
+
+¿Cómo califica la comunicación con el área de operaciones?
+☐ Buena ☐ Regular ☐ Mala
+
+4.
+
+¿Considera que los vehículos asignados son adecuados?
+☐ Sí ☐ No
+
+5.
+
+¿Qué mejoraría del proceso de distribución?
+
+-Observación:
+Descripción:
+Se realizó la observación del proceso de distribución de material electoral desde la
+planificación hasta la entrega final.
+Resultados de la Observación:
+Se identificó que el proceso inicia con la planificación de rutas, seguido de la asignación de
+vehículos y conductores. Posteriormente, se realiza la carga del material electoral y el
+traslado hacia los locales de votación. Durante el trayecto pueden presentarse incidencias,
+las cuales son comunicadas al área de operaciones para su solución, permitiendo continuar
+con la entrega.
+-Requerimientos:
+Requerimientos Funcionales
+•
+
+RF01: El sistema debe permitir planificar rutas de distribución.
+
+•
+
+RF02: El sistema debe registrar los vehículos disponibles.
+
+•
+
+RF03: El sistema debe asignar conductores a las rutas.
+
+•
+
+RF04: El sistema debe registrar incidencias en tiempo real.
+
+•
+
+RF05: El sistema debe permitir la comunicación entre conductores y
+el área de operaciones.
+
+•
+
+RF06: El sistema debe confirmar la entrega del material
+electoral. Requerimientos No Funcionales
+
+•
+
+RNF01: El sistema debe ser accesible en tiempo real.
+
+•
+
+RNF02: El sistema debe garantizar la seguridad de la información.
+
+•
+
+RNF03: El sistema debe ser fácil de usar para todos los usuarios.
+
+•
+
+RNF04: El sistema debe tener alta disponibilidad.
+
+2.2 Matriz de requerimientos
+Matriz de Requerimientos Funcionales:
+Código
+
+RF-01
+
+RF-02
+
+RF-03
+
+RF-04
+
+RF-05
+
+RF-06
+
+RF-07
+
+RF-08
+
+RF-09
+
+RF-10
+
+RF-11
+
+Requerimiento
+Funcional
+
+Descripción
+
+Actor Responsable
+
+El sistema deberá
+permitir registrar,
+Gestión de usuarios
+Administrador
+modificar y eliminar
+usuarios.
+El sistema deberá
+Autenticación de
+validar el acceso
+Todos los usuarios
+usuarios
+mediante usuario y
+contraseña.
+Permitir registrar las
+unidades de
+Registro de vehículos transporte con sus Supervisor de Flota
+características
+técnicas.
+Registrar y actualizar
+Gestión de
+información de
+RR.HH. / Operaciones
+conductores
+conductores y
+licencias.
+Permitir asignar
+Asignación de
+vehículos a rutas y
+Coordinador Logístico
+vehículos
+conductores según
+disponibilidad.
+Generar y
+administrar rutas de
+Planificación de rutas
+Coordinador Logístico
+distribución para
+cada operación.
+Mostrar en tiempo
+Supervisor de
+Monitoreo GPS
+real la ubicación de
+Operaciones
+cada unidad.
+Permitir reportar
+Registro de
+retrasos, averías,
+Conductor
+incidencias
+accidentes u otros
+eventos.
+Registrar contratos,
+Gestión de contratos fechas, servicios y
+Gerencia de
+ONPE
+condiciones
+Operaciones
+pactadas.
+Registrar el estado de
+Seguimiento de
+cada entrega
+Supervisor Logístico
+entregas
+(pendiente, en ruta,
+entregado).
+Generar alertas por
+retrasos, desvíos de
+Alertas automáticas
+Sistema
+ruta o incidencias
+críticas.
+
+Prioridad
+
+Alta
+
+Alta
+
+Alta
+
+Alta
+
+Alta
+
+Alta
+
+Alta
+
+Alta
+
+Media
+
+Alta
+
+Alta
+
+RF-12
+
+RF-13
+
+RF-14
+
+RF-15
+
+RF-16
+
+RF-17
+
+RF-18
+
+RF-19
+
+RF-20
+
+Mostrar vehículos
+disponibles,
+Supervisor de Flota
+ocupados o en
+mantenimiento.
+Emitir reportes de
+cumplimiento,
+Generación de
+incidencias y
+Gerencia
+reportes
+rendimiento
+logístico.
+Consultar
+operaciones, rutas y Gerencia /
+Consulta histórica
+entregas realizadas Supervisión
+anteriormente.
+Registrar
+mantenimientos
+Gestión de
+preventivos y
+Supervisor de Flota
+mantenimiento
+correctivos de
+vehículos.
+Mostrar indicadores
+Dashboard operativo clave de operaciones Gerencia
+en tiempo real.
+Permitir registrar
+Confirmación de
+evidencia digital de
+Conductor
+entrega
+entrega (foto o
+firma).
+Registrar entradas y
+Gestión de
+Operador de
+salidas de material
+almacenes
+Almacén
+electoral.
+Informar
+automáticamente
+Notificaciones a
+eventos críticos
+Sistema
+supervisores
+mediante
+notificaciones.
+Registrar todas las
+Auditoría de
+acciones realizadas Sistema
+operaciones
+dentro del sistema.
+Control de
+disponibilidad de
+flota
+
+Matriz de Requerimientos No Funcionales:
+Requerimiento No
+Código
+Funcional
+
+RNF-01
+
+Disponibilidad
+
+RNF-02
+
+Seguridad
+
+Descripción
+El sistema deberá estar
+disponible el 99.5% del
+tiempo.
+Toda la información
+deberá estar protegida
+mediante autenticación y
+autorización por roles.
+
+Alta
+
+Alta
+
+Media
+
+Media
+
+Alta
+
+Alta
+
+Media
+
+Alta
+
+Media
+
+Prioridad
+
+Alta
+
+Alta
+
+RNF-03
+
+Rendimiento
+
+RNF-04
+
+Escalabilidad
+
+RNF-05
+
+Integridad de datos
+
+RNF-06
+
+Compatibilidad
+
+RNF-07
+
+Usabilidad
+
+RNF-08
+
+Mantenibilidad
+
+RNF-09
+
+Respaldo de información
+
+RNF-10
+
+Geolocalización
+
+RNF-11
+
+Trazabilidad
+
+RNF-12
+
+Portabilidad
+
+RNF-13
+
+Disponibilidad móvil
+
+RNF-14
+
+Confiabilidad
+
+RNF-15
+
+Cumplimiento normativo
+
+Las consultas críticas
+deberán responder en
+menos de 3 segundos.
+El sistema deberá soportar
+el crecimiento de usuarios
+y operaciones futuras.
+Garantizar que los datos
+registrados no presenten
+inconsistencias.
+Debe funcionar en
+navegadores modernos
+(Chrome, Edge y Firefox).
+La interfaz deberá ser
+intuitiva y fácil de utilizar
+para el personal operativo.
+El sistema deberá permitir
+actualizaciones sin afectar
+la operación.
+Realizar copias de
+seguridad automáticas
+diariamente.
+Integración con API de
+Google Maps para
+visualización de rutas.
+Todas las operaciones
+deberán quedar
+registradas para auditoría.
+La aplicación deberá poder
+desplegarse en AWS o
+Azure.
+Los conductores podrán
+acceder mediante
+smartphones o tablets.
+El sistema deberá
+recuperar operaciones
+ante fallos sin pérdida de
+datos.
+Cumplir con las normativas
+del MTC y requisitos de la
+ONPE relacionados con la
+operación logística.
+
+Alta
+
+Alta
+
+Alta
+
+Media
+
+Alta
+
+Media
+
+Alta
+
+Alta
+
+Alta
+
+Media
+
+Alta
+
+Alta
+
+Alta
+
+Matriz de Trazabilidad (Objetivos ↔ Requerimientos):
+
+Objetivo Específico
+
+Requerimientos Relacionados
+
+Diagnosticar procesos y cuellos
+RF-07, RF-08, RF-11, RF-13
+de botella
+Modelar actores y procesos del RF-01, RF-03, RF-04, RF-05, RFnegocio
+06
+
+3
+
+Documentar requerimientos
+funcionales y no funcionales
+
+RF-01 al RF-20, RNF-01 al RNF15
+
+Diseñar modelos lógicos y
+conceptuales
+
+RF-05, RF-06, RF-07, RF-10, RF16
+
+FASE DE ELABORACIÓN
+
+3.1 Casos de Usos
+Actores del Sistema:
+Actor
+
+Descripción
+
+Administrador
+
+Gestiona usuarios y parámetros
+generales del sistema.
+
+Gerente de Operaciones
+
+Supervisa las operaciones
+logísticas y consulta reportes.
+
+Coordinador Logístico
+
+Planifica rutas y asigna
+vehículos y conductores.
+
+Supervisor de Flota
+
+Monitorea vehículos y
+mantenimientos.
+
+Conductor
+
+Ejecuta las rutas asignadas y
+reporta incidencias.
+
+Operador de Almacén
+
+Gestiona la carga y descarga del
+material.
+
+Sistema GPS
+
+Envía información de ubicación
+en tiempo real.
+
+Lista de Casos de Uso:
+Código
+
+Caso de Uso
+
+Actor Principal
+
+CU-01
+
+Iniciar Sesión
+
+Todos los usuarios
+
+CU-02
+
+Gestionar Usuarios
+
+Administrador
+
+CU-03
+
+Registrar Vehículo
+
+Supervisor de Flota
+
+CU-04
+
+Registrar Conductor
+
+Coordinador Logístico
+
+CU-05
+
+Planificar Ruta
+
+Coordinador Logístico
+
+CU-06
+
+Asignar Vehículo y
+Conductor
+
+Coordinador Logístico
+
+CU-07
+
+Monitorear Flota en
+Tiempo Real
+
+Supervisor de
+Operaciones
+
+CU-08
+
+Registrar Incidencia
+
+Conductor
+
+CU-09
+
+Gestionar Contratos
+ONPE
+
+Gerente de Operaciones
+
+CU-10
+
+Registrar Entrega de
+Material
+
+Conductor
+
+CU-11
+
+Generar Reportes
+
+Gerente de Operaciones
+
+CU-12
+
+Gestionar
+Mantenimiento Vehicular Supervisor de Flota
+
+CU-13
+
+Consultar Historial de
+Operaciones
+
+Gerente
+
+CU-14
+
+Recibir Alertas de
+Retraso
+
+Sistema
+
+CU-15
+
+Visualizar Dashboard
+Operativo
+
+Gerente y Supervisores
+
+3.2 Especificaciones del caso de Uso
+Caso de Uso 1: Gestionar Transporte de Material Electoral
+Actor principal: Coordinador de logística
+Descripción: Permite registrar, monitorear y actualizar el traslado de material electoral
+desde el almacén central hasta los centros de votación.
+Precondiciones: Inventario y flota registrados en el sistema.
+Flujo principal:
+El coordinador selecciona el pedido a transportar.
+El sistema valida disponibilidad de flota y personal.
+Se genera itinerario de transporte y ruta óptima.
+El sistema registra los tiempos de salida y llegada.
+Flujos alternativos: Retrasos por fallas mecánicas, cambios de ruta, reasignación de flota.
+Postcondiciones: Actualización del estado de entrega y registro en el historial de transporte.
+Caso de Uso 2: Gestionar Inventario de Material Electoral
+Actor principal: Encargado de almacén
+Descripción: Permite registrar nuevas entradas, actualizar cantidades y reportar incidencias
+en el material.
+Precondiciones: Material existente en el almacén y acceso al sistema.
+Flujo principal:
+Registrar nuevo material o actualización de stock.
+Validar integridad del registro con los pedidos planificados.
+Reportar incidencias o faltantes.
+Postcondiciones: Inventario actualizado y disponibilidad de información para planificación.
+
+3.3 Análisis del Sistema
+El análisis tiene como finalidad identificar la estructura funcional de la solución propuesta
+para Servicios Generales Galaga S.A.C., para a mejorar la planificación, control y seguimiento
+de las operaciones vinculadas al transporte y distribución de material electoral para la ONPE.
+Del diagnóstico realizado en la fase inicial, se concluyó que la organización presenta
+deficiencias en la planificación de rutas, en la asignación de vehículos y conductores, así
+
+como en el registro y monitoreo de incidencias durante la distribución. Estas limitaciones
+generan retrasos en las entregas, problemas de coordinación operativa y poca visibilidad del
+estado real de las rutas en ejecución.
+Frente a esta problemática, el sistema de información propuesto permitirá centralizar la
+gestión operativa mediante el registro de rutas, la asignación de recursos logísticos, el
+monitoreo del transporte, el control de incidencias y la confirmación de entregas. De esta
+manera, se busca optimizar el flujo de información entre el área de operaciones, los
+conductores y los responsables de supervisión logística.
+Desde la perspectiva del análisis, el sistema se organiza en componentes funcionales que
+responden a los principales procesos del negocio:
+•
+
+gestión de usuarios y personal operativo
+
+•
+
+administración de vehículos disponibles
+
+•
+
+planificación y asignación de rutas
+
+•
+
+control del material electoral transportado
+
+•
+
+registro y seguimiento de incidencias
+
+•
+
+control de entregas y generación de trazabilidad operativa.
+
+El análisis también permite identificar las entidades principales del dominio, las cuales
+representan los objetos de negocio más relevantes del sistema, como usuarios, operadores,
+conductores, vehículos, rutas, incidencias, materiales electorales y entregas. Estas entidades
+constituyen la base para la construcción del modelo conceptual, lógico y físico del sistema.
+En consecuencia, el análisis del sistema sirve como puente entre los requerimientos
+identificados y el diseño de la solución tecnológica, permitiendo estructurar de manera
+ordenada la información, las relaciones entre los elementos del negocio y las funcionalidades
+que el sistema deberá soportar.
+
+3.3.1 Paquete de Análisis
+Con el objetivo de organizar de manera lógica el sistema propuesto, se definieron paquetes de
+análisis que agrupan clases y funciones relacionadas con los principales procesos de negocio de
+Servicios Generales Galaga S.A.C. Esta organización facilita la comprensión del sistema, mejora su
+mantenibilidad y establece una base clara para el diseño posterior.
+Los paquetes de análisis identificados son los siguientes:
+
+a) Paquete de Gestión de Usuarios y Personal
+Este paquete agrupa las clases relacionadas con los usuarios que interactúan con el sistema y con el
+personal operativo involucrado en la logística. Su finalidad es administrar la información de acceso y
+los datos del personal que participa en la ejecución de las rutas.
+
+Clases incluidas:
+•
+
+Usuario
+
+•
+
+Operador
+
+•
+
+Conductor
+
+b) Paquete de Gestión de Flota y Rutas
+Este paquete reúne las clases encargadas de la planificación operativa del transporte. Permite
+registrar los vehículos disponibles, asignarlos a rutas específicas y relacionarlos con conductores y
+operadores responsables.
+Clases incluidas:
+•
+
+Vehículo
+
+•
+
+Ruta
+
+c) Paquete de Gestión de Material Electoral
+Este paquete concentra la información vinculada al material electoral que será transportado durante
+cada operación logística. Su propósito es mantener el control de los bienes asignados a cada ruta.
+Clases incluidas:
+•
+
+MaterialElectoral
+
+d) Paquete de Monitoreo e Incidencias
+Este paquete permite registrar y gestionar los eventos o problemas ocurridos durante la ejecución
+de las rutas, tales como retrasos, fallas mecánicas o inconvenientes de comunicación. Su función
+principal es brindar trazabilidad y soporte a la toma de decisiones en tiempo real.
+Clases incluidas:
+•
+
+Incidencia
+
+e) Paquete de Entregas y Seguimiento
+Este paquete agrupa la información asociada a la culminación del servicio logístico, específicamente
+la confirmación de la entrega del material electoral, su estado y observaciones relevantes.
+Clases incluidas:
+•
+
+Entrega
+
+La estructura de paquetes definida permite representar el sistema de forma modular, alineada con
+los procesos operativos de la empresa y con los requerimientos funcionales identificados en la etapa
+de levantamiento de información.
+
+Paquete de Análisis
+Un diagrama con paquetes como estos:
+•
+
+Gestión de Usuarios y Personal
+
+•
+
+Gestión de Flota y Rutas
+
+•
+
+Gestión de Material Electoral
+
+•
+
+Monitoreo e Incidencias
+
+•
+
+Entregas y Seguimiento
+
+3.3.2 Clases de Entidad
+Las clases de entidad representan los objetos principales del negocio sobre los que el sistema
+almacena y procesa información. Estas clases modelan los datos persistentes de la operación
+logística y permiten estructurar de forma coherente la solución propuesta.
+A continuación, se describen las principales clases de entidad identificadas para el sistema:
+a) Usuario
+Representa a las personas que acceden al sistema según un rol determinado. Esta clase almacena la
+información necesaria para la autenticación y control de acceso.
+Atributos:
+•
+
+idUsuario
+
+•
+
+nombre
+
+•
+
+correo
+
+•
+
+contraseña
+
+•
+
+rol
+
+b) Operador
+Representa al personal encargado de coordinar y gestionar las rutas logísticas dentro del sistema. Su
+función principal es supervisar la planificación y ejecución de las operaciones.
+Atributos:
+•
+
+idOperador
+
+•
+
+nombre
+
+•
+
+teléfono
+
+c) Conductor
+Representa al responsable de ejecutar el traslado del material electoral mediante una unidad
+vehicular asignada. Su estado permite conocer su disponibilidad operativa.
+Atributos:
+•
+
+idConductor
+
+•
+
+nombre
+
+•
+
+licencia
+
+•
+
+teléfono
+
+•
+
+estado
+
+d) Vehículo
+Representa la unidad de transporte utilizada para la distribución del material electoral. Contiene
+información técnica y operativa relevante para la asignación de rutas.
+Atributos:
+•
+
+idVehiculo
+
+•
+
+placa
+
+•
+
+tipo
+
+•
+
+capacidad
+
+•
+
+estado
+
+•
+
+gps
+
+e) Ruta
+Representa el recorrido logístico planificado para el traslado del material electoral desde un punto
+de origen hacia un destino determinado. Es una de las entidades centrales del sistema, ya que se
+relaciona con conductor, vehículo, operador, incidencias, materiales y entrega.
+Atributos:
+•
+
+idRuta
+
+•
+
+origen
+
+•
+
+destino
+
+•
+
+fechaSalida
+
+•
+
+fechaLlegada
+
+•
+
+estado
+
+f) MaterialElectoral
+Representa los bienes electorales transportados en una ruta específica. Permite registrar la
+descripción, cantidad y estado del material asignado.
+
+Atributos:
+•
+
+idMaterial
+
+•
+
+descripción
+
+•
+
+cantidad
+
+•
+
+estado
+
+g) Incidencia
+Representa cualquier evento, problema o situación imprevista ocurrida durante la ejecución de una
+ruta. Esta entidad permite llevar control y seguimiento de los incidentes reportados en tiempo real.
+Atributos:
+•
+
+idIncidencia
+
+•
+
+fechaHora
+
+•
+
+descripción
+
+•
+
+tipo
+
+•
+
+estado
+
+h) Entrega
+Representa la confirmación de recepción del material transportado al destino correspondiente.
+Permite registrar el estado final del servicio y observaciones relevantes sobre la entrega.
+Atributos:
+•
+
+idEntrega
+
+•
+
+fechaEntrega
+
+•
+
+estado
+
+•
+
+observación
+
+Relaciones entre clases de entidad
+Las principales relaciones identificadas entre las clases de entidad son las siguientes:
+•
+
+Un Operador gestiona muchas Rutas.
+
+•
+
+Un Conductor puede ser asignado a muchas Rutas.
+
+•
+
+Un Vehículo puede ser utilizado en muchas Rutas.
+
+•
+
+Una Ruta transporta uno o varios registros de MaterialElectoral.
+
+•
+
+Una Ruta puede registrar múltiples Incidencias.
+
+•
+
+Una Ruta genera una única Entrega.
+
+•
+
+Un Usuario accede al sistema de acuerdo con su rol.
+
+Estas clases de entidad constituyen la base del modelo conceptual del sistema y permiten
+representar estructuralmente la operación logística de la empresa en un entorno informatizado.
+Clase
+Usuario
+Operador
+
+Descripción
+Controla acceso al sistema
+Gestiona operaciones
+logísticas
+Ejecuta el transporte
+Medio de transporte
+asignado
+Planifica el traslado
+
+Conductor
+Vehículo
+Ruta
+MaterialElectoral
+Incidencia
+Entrega
+
+Bienes transportados
+Eventos ocurridos durante la
+ruta
+Confirmación de recepción
+
+Atributos principales
+idUsuario, nombre, correo, contraseña, rol
+idOperador, nombre, teléfono
+idConductor, nombre, licencia, teléfono, estado
+idVehiculo, placa, tipo, capacidad, estado, gps
+idRuta, origen, destino, fechaSalida,
+fechaLlegada, estado
+idMaterial, descripción, cantidad, estado
+idIncidencia, fechaHora, descripción, tipo,
+estado
+idEntrega, fechaEntrega, estado, observación
+
+3.3.3 Realizaciones de Caso de Uso
+
+Actores del Sistema:
+o
+
+Internos: La Gerencia de Operaciones (encargada de la planificación y control) y los
+Conductores (responsables del traslado físico).
+
+o
+
+Externos: El Representante de la ONPE (validador del servicio) y el Sistema GPS
+(actor de hardware que provee telemetría).
+
+o
+
+Flujos y Relaciones Funcionales:
+
+o
+
+Planificación: El caso de uso Planificar rutas y asignar vehículos, iniciado por la
+Gerencia de Operaciones, incorpora una relación de inclusión (<<include>>). Esto
+significa que el sistema no permite planificar una ruta sin antes Verificar la
+disponibilidad de flota.
+
+o
+
+Monitoreo y Control: La funcionalidad de Monitorear transporte en tiempo real es
+consultada por la Gerencia y alimentada por los Conductores. Este proceso incluye
+obligatoriamente (<<include>>) la acción de Reportar incidencias en ruta para
+mantener la trazabilidad operativa.
+
+o
+
+Liquidación de Entrega: El conductor ejecuta el caso de uso central Confirmar
+entrega de material electoral al finalizar su trayecto. Si durante la recepción ocurren
+contingencias con los paquetes, el proceso se extiende bajo una condición específica
+(<<extend>>) hacia el Registro de devolución de material sensible, un evento en el
+cual intervienen directamente el Representante de la ONPE y el Sistema GPS para
+cerrar la auditoría del viaje.
+
+3.3.4 Diagrama de comunicación
+
+El presente diagrama de comunicación modela la interacción estructural y el flujo de mensajes
+necesarios para llevar a cabo la RCU-01: Planificación y Asignación de Rutas dentro del sistema de
+Servicios Generales Galaga S.A.C. A diferencia de una representación estrictamente temporal, este
+modelo ilustra la topología de los objetos colaborativos, implementando el patrón BCE (Frontera,
+Control, Entidad) para mantener la separación lógica de las capas de la aplicación.
+El proceso interactivo es iniciado por el Coordinador Logístico, quien ingresa los parámetros del viaje
+a través de la interfaz gráfica (FrmAsignacionRuta). Esta clase de frontera delega la solicitud al
+componente de lógica de negocio (ControladorRuta), el cual orquesta las validaciones del sistema. El
+controlador se comunica primero con la entidad Vehículo para asegurar la disponibilidad de la flota y
+luego con la entidad Conductor para verificar su estado operativo. Una vez confirmados ambos
+recursos logísticos, el controlador instancia un nuevo registro definitivo en la entidad Ruta y retorna
+la confirmación de asignación a la interfaz del usuario, garantizando la trazabilidad exigida para el
+transporte de material de la ONPE
+
+3.3.5 Diagrama de secuencia
+
+•
+
+Inicio y Entrada (Frontera): El Coordinador Logístico inicia el proceso ingresando los datos
+del viaje (origen, destino, fechas) en la interfaz de usuario de Angular (:FrmAsignacionRuta).
+La vista delega la solicitud al controlador del backend (:ControladorRuta) mediante el
+mensaje 2: solicitarAsignacion().
+
+•
+
+Procesamiento y Verificación (Control): El controlador orquesta las validaciones. Envía el
+mensaje 3: verificarDisponibilidadVehiculo() a la entidad :vehículo para
+confirmar su estado operativo y disponibilidad para las fechas indicadas.
+
+•
+
+Lógica Condicional (Fragmento Combinado 'alt'):
+
+•
+
+Escenario Exitoso (Happy Path): Si la condición Vehículo disponible se cumple, el
+controlador procede a enviar el mensaje 4: verificarEstadoConductor() a la entidad
+:Conductor. Una vez confirmado el conductor, el controlador envía un mensaje de creación 5:
+create(...) a la entidad :Ruta, instanciando un nuevo registro en la base de datos.
+Finalmente, retorna la confirmación de éxito 6: confirmarAsignacion(id_ruta) a la vista,
+actualizando la interfaz para el usuario.
+
+•
+
+Escenario Alternativo (Falla): Si el vehículo no está disponible, el flujo se desvía en la sección
+else del fragmento alt. El controlador envía el mensaje mostrarError("Vehículo no
+disponible") de vuelta a la interfaz, notificando al coordinador que la planificación no se
+pudo concretar debido a la falta de transporte
+
+3.4
+
+Modelo conceptual o Diagrama de clase
+
+Clases principales
+Usuario
+•
+
+idUsuario
+
+•
+
+nombre
+
+•
+
+correo
+
+•
+
+contraseña
+
+• rol
+Operador
+•
+
+idOperador
+
+•
+
+nombre
+
+• teléfono
+Conductor
+•
+
+idConductor
+
+•
+
+nombre
+
+•
+
+licencia
+
+•
+
+teléfono
+
+• estado
+Vehículo
+•
+
+idVehiculo
+
+•
+
+placa
+
+•
+
+tipo
+
+•
+
+capacidad
+
+•
+
+estado
+
+•
+
+gps
+
+Ruta
+•
+
+idRuta
+
+•
+
+origen
+
+•
+
+destino
+
+•
+
+fechaSalida
+
+•
+
+fechaLlegada
+
+• estado
+MaterialElectoral
+• idMaterial
+• descripción
+• cantidad
+• estado
+Incidencia
+• idIncidencia
+• fechaHora
+• descripción
+• tipo
+• estado
+Entrega
+• idEntrega
+• fechaEntrega
+• estado
+• observación
+Relaciones
+• Operador gestiona muchas Rutas (1:N)
+• Ruta utiliza un Vehículo (N:1)
+• Ruta es asignada a un Conductor (N:1)
+• Ruta transporta Material Electoral (1:N)
+• Ruta puede registrar muchas Incidencias (1:N)
+• Ruta genera una Entrega (1:1)
+• Usuario accede al sistema según su rol
+
+3.5
+
+Modelo Lógico
+Tabla: USUARIO
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_usuario
+
+INT
+
+PK
+
+nombre
+
+VARCHAR(100)
+
+correo
+
+VARCHAR(100)
+
+contraseña
+
+VARCHAR(255)
+
+rol
+
+VARCHAR(30)
+
+Tabla: OPERADOR
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_operador
+
+INT
+
+PK
+
+nombre
+
+VARCHAR(100)
+
+telefono
+
+VARCHAR(20)
+
+Tabla: CONDUCTOR
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_conductor
+
+INT
+
+PK
+
+nombre
+
+VARCHAR(100)
+
+licencia
+
+VARCHAR(20)
+
+telefono
+
+VARCHAR(20)
+
+estado
+
+VARCHAR(20)
+
+Tabla: VEHICULO
+Campo
+
+Tipo de Dato
+
+id_vehiculo INT
+
+Clave
+PK
+
+placa
+
+VARCHAR(15)
+
+tipo
+
+VARCHAR(50)
+
+capacidad
+
+DECIMAL(10,2)
+
+estado
+
+VARCHAR(20)
+
+gps
+
+VARCHAR(50)
+
+Tabla: RUTA
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_ruta
+
+INT
+
+PK
+
+origen
+
+VARCHAR(100)
+
+destino
+
+VARCHAR(100)
+
+fecha_salida
+
+DATETIME
+
+fecha_llegada
+
+DATETIME
+
+estado
+
+VARCHAR(20)
+
+id_conductor
+
+INT
+
+FK
+
+id_vehiculo
+
+INT
+
+FK
+
+id_operador
+
+INT
+
+FK
+
+Tabla: MATERIAL_ELECTORAL
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_material
+
+INT
+
+PK
+
+descripcion
+
+VARCHAR(150)
+
+cantidad
+
+INT
+
+estado
+
+VARCHAR(20)
+
+id_ruta
+
+INT
+
+FK
+
+Tabla: INCIDENCIA
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_incidencia
+
+INT
+
+PK
+
+fecha_hora
+
+DATETIME
+
+descripcion
+
+TEXT
+
+tipo
+
+VARCHAR(50)
+
+estado
+
+VARCHAR(20)
+
+id_ruta
+
+INT
+
+FK
+
+Tabla: ENTREGA
+Campo
+
+Tipo de Dato
+
+Clave
+
+id_entrega
+
+INT
+
+PK
+
+fecha_entrega
+
+DATETIME
+
+estado
+
+VARCHAR(20)
+
+observacion
+
+TEXT
+
+id_ruta
+
+INT
+
+FK
+
+Relaciones del Modelo Lógico
+
+3.6
+
+Tabla Padre
+
+Relación
+
+Tabla Hija
+
+Operador
+
+1:N
+
+Ruta
+
+Conductor
+
+1:N
+
+Ruta
+
+Vehículo
+
+1:N
+
+Ruta
+
+Ruta
+
+1:N
+
+Material_Electoral
+
+Ruta
+
+1:N
+
+Incidencia
+
+Ruta
+
+1:1
+
+Entrega
+
+Modelo Físico
+
+CREATE TABLE usuario (
+id_usuario SERIAL PRIMARY KEY,
+nombre VARCHAR(100),
+correo VARCHAR(100) UNIQUE,
+contraseña VARCHAR(255),
+rol VARCHAR(30)
+);
+CREATE TABLE operador (
+id_operador SERIAL PRIMARY KEY,
+nombre VARCHAR(100),
+telefono VARCHAR(20)
+);
+CREATE TABLE conductor (
+id_conductor SERIAL PRIMARY KEY,
+nombre VARCHAR(100),
+licencia VARCHAR(20),
+telefono VARCHAR(20),
+estado VARCHAR(20)
+
+);
+CREATE TABLE vehiculo (
+id_vehiculo SERIAL PRIMARY KEY,
+placa VARCHAR(15) UNIQUE,
+tipo VARCHAR(50),
+capacidad DECIMAL(10,2),
+estado VARCHAR(20),
+gps VARCHAR(50)
+);
+CREATE TABLE ruta (
+id_ruta SERIAL PRIMARY KEY,
+origen VARCHAR(100),
+destino VARCHAR(100),
+fecha_salida TIMESTAMP,
+fecha_llegada TIMESTAMP,
+estado VARCHAR(20),
+id_conductor INT,
+id_vehiculo INT,
+id_operador INT
+FOREIGN KEY (id_conductor) REFERENCES conductor(id_conductor),
+FOREIGN KEY (id_vehiculo) REFERENCES vehiculo(id_vehiculo),
+FOREIGN KEY (id_operador) REFERENCES operador(id_operador)
+);
+CREATE TABLE material_electoral (
+id_material SERIAL PRIMARY KEY,
+descripcion VARCHAR(150),
+cantidad INT,
+estado VARCHAR(20),
+id_ruta INT,
+FOREIGN KEY (id_ruta) REFERENCES ruta(id_ruta)
+);
+
+CREATE TABLE incidencia (
+id_incidencia SERIAL PRIMARY KEY,
+fecha_hora TIMESTAMP,
+descripcion TEXT,
+tipo VARCHAR(50),
+estado VARCHAR(20),
+id_ruta INT,
+FOREIGN KEY (id_ruta) REFERENCES ruta(id_ruta)
+);
+CREATE TABLE entrega (
+id_entrega SERIAL PRIMARY KEY,
+fecha_entrega TIMESTAMP,
+estado VARCHAR(20),
+observacion TEXT,
+id_ruta INT UNIQUE,
+FOREIGN KEY (id_ruta) REFERENCES ruta(id_ruta)
+);
+
+3.7 Tarjeta CRC de cada clase
+Clase
+Responsabilidad
+Transporte
+Gestionar rutas,
+horarios y registro de
+transporte
+Material Electoral
+Registrar y actualizar
+inventario de material
+Centro de
+Mantener información de
+Votación
+ubicación y estado de los
+centros
+Usuario /
+Supervisar operaciones y
+Coordinador
+generar reportes
+
+Colaborador
+Material Electoral,
+Coordinador Logístico
+Transporte, Almacén
+Transporte
+
+Transporte, Material
+Electoral
+
+Paquete: Usuarios y Personal Operativo
+
+Clase
+Usuario
+Coordinador
+Logístico
+
+Responsabilidad
+Gestionar acceso y roles
+dentro del sistema
+Planificar rutas y supervisar
+entregas
+
+Colaborador
+Coordinador Logístico,
+Sistema
+Usuario,
+ControladorRuta,
+Ruta
+
+Personal
+Operativo
+
+Ejecutar transporte de
+material y reportar
+incidencias
+
+Ruta, Vehiculo,
+Material Electoral
+
+Paquete: Transporte y Planificación Operativa
+
+Clase
+
+Responsabilidad
+
+Colaborador
+
+Vehículo
+
+Registrar disponibilidad, tipo y mantenimiento
+de la flota
+
+Coordinador Logístico, Ruta
+
+Conductor
+
+Registrar estado operativo, asignaciones de
+transporte
+
+Vehículo, Ruta, Coordinador
+Logístico
+
+Ruta
+
+Gestionar asignación de vehículos y
+conductores a transportes
+
+Coordinador Logístico, Vehículo,
+Conductor
+
+ControladorRuta Orquestar validaciones y asignaciones del
+transporte
+
+Ruta, Vehículo, Conductor,
+Usuario
+
+Paquete: Material y Centros de Votación
+Clase
+
+Responsabilidad
+
+Colaborador
+
+Material
+Electoral
+
+Registrar inventario, actualizar stock y reportar
+incidencias
+
+Almacén, Ruta, Coordinador
+Logístico
+
+Centro de Mantener información de ubicación, estado y
+Votación capacidad
+
+Ruta, Material Electoral
+
+Almacén
+
+Material Electoral, Coordinador
+Logístico
+
+Controlar inventario y disponibilidades
+
+Paquete: Interfaces y Fronteras del Sistema
+Clase
+
+Responsabilidad
+
+Colaborador
+
+FrmAsignacionRuta Permitir al usuario ingresar parámetros de transporte
+(Interfaz)
+
+Usuario,
+ControladorRuta
+
+Sistema
+
+Todas las clases del
+sistema
+
+Coordinar interacciones entre usuarios, entidades y
+controladores
+
+El diseño del sistema tiene como finalidad definir la arquitectura tecnológica y la organización
+interna de la solución propuesta para Servicios Generales Galaga S.A.C., permitiendo garantizar
+escalabilidad, mantenibilidad, disponibilidad y control eficiente de las operaciones logísticas
+vinculadas al transporte de material electoral para la ONPE. El diseño está alineado con los
+requerimientos funcionales y no funcionales identificados durante el análisis del sistema.
+
+3.8
+
+Diseño del sistema
+
+El diseño del sistema tiene como finalidad definir la arquitectura tecnológica y la organización
+interna de la solución propuesta para Servicios Generales Galaga S.A.C., permitiendo garantizar
+escalabilidad, mantenibilidad, disponibilidad y control eficiente de las operaciones logísticas
+vinculadas al transporte de material electoral para la ONPE. Este diseño funciona como el puente
+entre los requerimientos funcionales no funcionales descubiertos en la fase de análisis y la
+implementación final.
+La solución se estructura como una aplicación web robusta basada en una arquitectura ClienteServidor. La interfaz gráfica será desarrollada en Angular, la lógica de negocio y exposición de
+servicios se gestionará a través de Spring Boot, y la persistencia de datos se centralizará en MySQL.
+Asimismo, el sistema integrará APIs externas como Google Maps y los servicios GPS de las unidades
+de transporte para posibilitar el monitoreo en tiempo real.
+Consideraciones principales del diseño:
+Elemento
+Entradas
+
+Aplicación en el sistema
+Formularios dinámicos para registrar usuarios, vehículos, conductores, rutas,
+incidencias, contratos y entregas.
+Dashboard operativo, reportes logísticos, alertas, historial de operaciones y
+
+Salidas
+
+visualización de rutas en mapas.
+
+Controles
+
+Autenticación, permisos por roles, validación de campos, verificación de
+disponibilidad de vehículos y confirmación de operaciones.
+
+Diálogo con Interfaz web con menús, formularios, mensajes de confirmación, mensajes de error
+el usuario
+
+y notificaciones.
+
+Persistencia
+
+Almacenamiento de la información operativa en MySQL.
+
+La arquitectura del sistema busca separar la interfaz, la lógica del negocio y el acceso a los datos para
+facilitar el mantenimiento, las pruebas y la incorporación de nuevas funcionalidades.
+
+3.8.1 Patrón de Diseño
+Para el desarrollo del Sistema de Gestión Logística Electoral se seleccionó el patrón
+arquitectónico MVC, debido a que permite separar la interfaz de usuario, el procesamiento de
+las solicitudes y la información del negocio.
+La aplicación también estará organizada mediante una arquitectura en capas. Cada capa tendrá
+responsabilidades específicas y se comunicará únicamente con las capas necesarias. Además, se
+empleará el patrón DAO o Repository para separar la lógica del negocio de las operaciones
+realizadas sobre la base de datos MySQL.
+
+Componentes:
+Vista — View
+La Vista corresponde a la interfaz gráfica con la que interactúan los usuarios. Será desarrollada
+mediante Angular y permitirá mostrar la información obtenida desde el servidor, así como
+capturar los datos ingresados mediante formularios.
+Entre sus principales funciones se encuentran:
+•
+
+Inicio de sesión.
+
+•
+
+Gestión de usuarios.
+
+•
+
+Registro de vehículos y conductores.
+
+•
+
+Planificación y asignación de rutas.
+
+•
+
+Visualización del monitoreo GPS.
+
+•
+
+Registro de incidencias.
+
+•
+
+Confirmación de entregas.
+
+•
+
+Consulta de reportes.
+
+La Vista no será responsable de ejecutar directamente las reglas del negocio ni de acceder a
+MySQL. Su función será recibir la información del usuario, enviarla al controlador y presentar los
+resultados recibidos.
+Controlador — Controller
+El Controlador será implementado en el backend mediante controladores REST de Spring Boot.
+Su función será recibir las solicitudes enviadas desde Angular, validar los datos básicos y dirigir
+cada solicitud hacia el servicio correspondiente.
+Entre sus responsabilidades se encuentran:
+•
+
+Recibir las solicitudes de los usuarios.
+
+•
+
+Validar los parámetros enviados.
+
+•
+
+Gestionar la autenticación y los permisos.
+
+•
+
+Solicitar la planificación o asignación de rutas.
+
+•
+
+Procesar el registro de incidencias.
+
+•
+
+Solicitar la confirmación de entregas.
+
+•
+
+Devolver respuestas a la interfaz Angular.
+
+Algunos controladores que podrían implementarse son:
+•
+
+UsuarioController
+
+•
+
+VehiculoController
+
+•
+
+RutaController
+
+•
+
+IncidenciaController
+
+•
+
+EntregaController
+
+•
+
+ReporteController
+
+Modelo — Model
+El Modelo representa la información, las entidades y las reglas del negocio del sistema. Incluye
+las clases identificadas durante el análisis y los servicios encargados de ejecutar las operaciones
+logísticas.
+Entre las principales entidades se encuentran:
+•
+
+Usuario.
+
+•
+
+Operador.
+
+•
+
+Conductor.
+
+•
+
+Vehículo.
+
+•
+
+Ruta.
+
+•
+
+Material electoral.
+
+•
+
+Incidencia.
+
+•
+
+Entrega.
+
+Las reglas del negocio serán ejecutadas mediante servicios. Por ejemplo, antes de asignar un
+vehículo a una ruta, el sistema deberá verificar que se encuentre disponible y que no esté
+registrado como ocupado o en mantenimiento.
+Acceso a datos — DAO o Repository
+La capa de acceso a datos será responsable de realizar las operaciones de consulta, registro,
+modificación y eliminación sobre MySQL. De esta forma, los controladores y la interfaz no
+accederán directamente a la base de datos.
+Algunos repositorios que podrían emplearse son:
+•
+
+UsuarioRepository
+
+•
+
+VehiculoRepository
+
+•
+
+ConductorRepository
+
+•
+
+RutaRepository
+
+•
+
+IncidenciaRepository
+
+•
+
+EntregaRepository
+
+Esta capa permitirá centralizar las consultas y reducir la dependencia entre la lógica del negocio
+y la tecnología utilizada para almacenar los datos.
+
+3.8.2 Diagrama de Estructura Compuesta
+El diagrama de estructura compuesta representa los componentes internos que participan en la
+gestión logística y la forma en que colaboran para ejecutar la operación de transporte.
+
+Relaciones Internas
+• Gestión de Usuarios autentica a los actores.
+•
+
+Planificación de Rutas consulta vehículos y conductores.
+
+•
+
+Monitoreo GPS recibe información de ubicación.
+
+•
+
+Gestión de Incidencias registra eventos de ruta.
+
+•
+
+Gestión de Entregas confirma recepción del material.
+
+•
+
+Dashboard consolida información para gerencia.
+
+3.8.3 Diagrama de Tiempo
+Este diagrama representa el comportamiento temporal durante el proceso de transporte del
+material electoral. Su objetivo es mostrar la secuencia cronológica de los eventos que ocurren desde
+la planificación de la ruta hasta la confirmación de la entrega, permitiendo identificar el estado de
+cada componente involucrado y los cambios que experimenta a lo largo del proceso.
+Este diagrama facilita la comprensión de las dependencias temporales entre las actividades, así
+como la sincronización de las acciones ejecutadas por los diferentes actores del sistema, tales como
+el coordinador logístico, el conductor y el sistema de monitoreo GPS. Además, permite verificar que
+las operaciones se desarrollen de manera ordenada, reduciendo retrasos y mejorando la trazabilidad
+del transporte.
+Durante el proceso se identifican los siguientes eventos temporales:
+1. Planificación de la ruta: el coordinador registra la orden de transporte y define la ruta
+óptima considerando el punto de origen, destino y restricciones logísticas.
+2. Asignación del conductor: el sistema asigna un conductor disponible y habilitado para
+realizar el traslado del material electoral.
+3. Asignación del vehículo: se selecciona el vehículo adecuado según la capacidad requerida,
+disponibilidad y estado operativo.
+4. Inicio del transporte: una vez confirmadas las asignaciones, el conductor inicia el recorrido y
+el sistema registra la hora de salida.
+5. Seguimiento mediante GPS: durante todo el trayecto se recibe información de
+geolocalización en tiempo real, permitiendo monitorear la ubicación, velocidad y
+cumplimiento de la ruta establecida.
+6. Registro de incidencias: si ocurre algún evento inesperado, como fallas mecánicas, desvíos,
+bloqueos de vías o retrasos, el conductor registra la incidencia desde la aplicación móvil para
+su seguimiento por parte del centro de operaciones.
+7. Confirmación de entrega: al llegar al destino, el responsable de la recepción valida la
+entrega del material electoral y el sistema almacena la evidencia correspondiente,
+incluyendo fecha, hora y responsable.
+8. Cierre de la operación: finalmente, el sistema cambia el estado del transporte a "Finalizado",
+actualiza los indicadores operativos y genera la información necesaria para reportes y
+auditorías.
+
+3.8.4 Diagrama de Despliegue
+El sistema se desplegará bajo una arquitectura cliente-servidor en la nube. El Sistema de Gestión
+Logística Electoral, muestra la distribución física de los componentes de software sobre los
+diferentes nodos de hardware y la comunicación existente entre ellos. Esta arquitectura permite
+garantizar disponibilidad, escalabilidad, seguridad y acceso remoto a la información durante las
+operaciones logísticas.
+La solución se implementará bajo una arquitectura cliente-servidor alojada en la nube, permitiendo
+que los usuarios accedan al sistema desde cualquier ubicación con conexión a Internet. Los clientes
+se comunicarán con el servidor de aplicaciones mediante servicios REST seguros, mientras que toda
+la información será almacenada de forma centralizada en una base de datos PostgreSQL.
+Los nodos que conforman la arquitectura son los siguientes:
+Cliente Web
+Corresponde a la aplicación desarrollada con Angular, utilizada por los usuarios administrativos de la
+empresa, entre ellos gerentes, coordinadores logísticos y supervisores. Desde esta interfaz se
+realizan actividades como la gestión de usuarios, administración de vehículos, planificación de rutas,
+monitoreo de operaciones, consulta de reportes y control de incidencias.
+
+Cliente Móvil
+Aplicación utilizada por los conductores durante el transporte del material electoral. Permite
+visualizar la ruta asignada, reportar incidencias en tiempo real, actualizar el estado del servicio y
+confirmar la entrega del material mediante el registro de evidencias.
+Servidor de Aplicaciones
+Implementado con Spring Boot, concentra la lógica de negocio del sistema. Se encarga de procesar
+las solicitudes provenientes de los clientes, aplicar las reglas de negocio, validar la información,
+administrar la autenticación de usuarios y exponer los servicios REST utilizados por las aplicaciones
+web y móvil.
+Servidor de Base de Datos
+La persistencia de la información se realizará mediante PostgreSQL, donde se almacenarán los datos
+relacionados con usuarios, contratos, vehículos, conductores, rutas, monitoreo GPS, incidencias,
+entregas y registros históricos, garantizando la integridad y consistencia de la información.
+Servicios Externos
+El sistema se integrará con servicios especializados que complementan las funcionalidades
+principales:
+•
+
+Google Maps API, utilizada para la visualización de mapas, cálculo de rutas y
+georreferenciación.
+
+•
+
+Sistema GPS, encargado de proporcionar la ubicación en tiempo real de los vehículos para
+facilitar el monitoreo y seguimiento de las operaciones logísticas.
+
+La comunicación entre todos los nodos se realizará mediante protocolos HTTP/HTTPS y servicios
+REST, asegurando un intercambio eficiente y seguro de la información entre los distintos
+componentes del sistema.
+
+3.8.5 Diagrama de Componentes
+La arquitectura del sistema de Servicios Generales Galaga S.A.C. se ha diseñado bajo un enfoque de
+micro-servicios modulares, lo que garantiza que cada componente sea independiente, escalable y
+mantenible. El funcionamiento del sistema se articula a través de los siguientes niveles:
+Capa de Entrada (API Gateway): Todos los componentes, ya sea la interfaz web (Angular) o
+dispositivos externos (GPS), interactúan con un API Gateway. Este componente actúa como un
+intermediario que centraliza la seguridad (autenticación JWT), el enrutamiento de peticiones y el
+balanceo de carga, protegiendo la lógica de negocio interna.
+Capas de Módulos (Backend): Cada módulo (Usuarios, Flota, Rutas, Entregas, etc.) contiene su propia
+lógica de negocio específica.
+Independencia: La modularidad permite que, por ejemplo, el módulo de Incidencias pueda ser
+actualizado o escalado en recursos sin afectar la operatividad del módulo de Reportes o Flota. La
+Comunicación: Las dependencias entre módulos están claramente definidas mediante interfaces de
+servicios REST, permitiendo que el módulo de Rutas consuma servicios del módulo de Flota para la
+asignación eficiente de despachos.
+Capa de Persistencia (PostgreSQL DB): Es el nodo central donde reside la integridad de los datos.
+Todos los módulos críticos (Flota, Entregas, Usuarios) mantienen una relación directa con la base de
+datos mediante protocolos JDBC/SSL, garantizando la consistencia transaccional y la seguridad de la
+información almacenada durante la operación logística.
+Integración Externa: El sistema extiende su capacidad operativa conectándose con servicios externos
+mediante adaptadores especializados. La Google Maps API y la Red de Dispositivos GPS operan como
+componentes de servicio que inyectan datos de tiempo real directamente hacia los módulos de GPS
+y Rutas, permitiendo una toma de decisiones basada en geolocalización precisa.
+Este diseño permite que, ante un incremento en la demanda de los procesos electorales de la ONPE,
+la empresa pueda escalar horizontalmente solo los módulos con mayor carga de procesamiento
+(como el módulo de GPS o Rutas) mediante el uso de contenedores Docker, optimizando así el costo
+de infraestructura en la nube
+Componente Función Principal
+Usuarios
+Gestión de accesos, roles y seguridad (JWT)
+Flota
+Administración del ciclo de vida de los
+vehículos
+Rutas
+Planificación algorítmica y asignación de
+despachos
+GPS
+Procesamiento de monitoreo en tiempo real
+Incidencias
+Entregas
+MySQL (DB)
+
+Captura y escalamiento de eventos en ruta
+Confirmación de recepción con
+firma/fotografía
+Persistencia global y relación de tablas
+
+Dependencias
+Requerido por todos los módulos
+Base de datos MySQL
+Flota, Contratos y GPS
+Integración externa (Google Maps
+API)
+Rutas
+Rutas y MySQL
+Componente base (independiente)
+
+El diagrama de componentes (ver figura inferior) ilustra la organización física del software,
+estructurando la solución en capas para garantizar la separación de responsabilidades y facilitar el
+mantenimiento del sistema .
+
+

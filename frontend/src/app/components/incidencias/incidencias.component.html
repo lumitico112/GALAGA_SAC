@@ -1,0 +1,84 @@
+<app-layout>
+        <header class="content-header">
+          <div>
+            <h1>Registro de Incidencias</h1>
+            <p class="subtitle">Reporte y seguimiento de imprevistos durante la distribución en tiempo real</p>
+          </div>
+        </header>
+
+        <div class="flota-grid">
+          <!-- Report Incident Form -->
+          <section class="glass-panel form-section">
+            <h2>Reportar Incidencia</h2>
+            <form (ngSubmit)="onReportar()" #incidenciaForm="ngForm" class="route-form">
+              <div class="form-group">
+                <label for="ruta">Ruta Activa</label>
+                <select id="ruta" name="ruta" [(ngModel)]="selectedRutaId" required>
+                  <option value="" disabled selected>Seleccione la ruta...</option>
+                  <option *ngFor="let r of rutasActivas" [value]="r.idRuta">
+                    Ruta #{{ r.idRuta }} - {{ r.destino }} ({{ r.conductor?.nombre }})
+                  </option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="tipo">Tipo de Incidencia</label>
+                <select id="tipo" name="tipo" [(ngModel)]="tipo" required>
+                  <option value="" disabled selected>Seleccione el tipo...</option>
+                  <option value="Retraso">Retraso</option>
+                  <option value="Falla Mecanica">Falla Mecánica</option>
+                  <option value="Desvio">Desvío de Ruta</option>
+                  <option value="Critico">Crítico (Accidente/Robo)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="descripcion">Descripción del Suceso</label>
+                <textarea id="descripcion" name="descripcion" [(ngModel)]="descripcion" required rows="4" placeholder="Describa a detalle lo sucedido en la ruta..."></textarea>
+              </div>
+
+              <button type="submit" [disabled]="incidenciaForm.invalid" class="btn-primary w-full">
+                Enviar Reporte
+              </button>
+            </form>
+          </section>
+
+          <!-- Incident List -->
+          <section class="glass-panel list-section">
+            <h2>Incidencias Reportadas</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Fecha/Hora</th>
+                    <th>Ruta ID</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let i of incidencias">
+                    <td>{{ i.fechaHora | date:'dd/MM/yyyy HH:mm' }}</td>
+                    <td>#{{ i.ruta?.idRuta }}</td>
+                    <td>
+                      <span class="badge-type" [ngClass]="{
+                        'text-danger': i.tipo === 'Critico',
+                        'text-warning': i.tipo === 'Falla Mecanica' || i.tipo === 'Retraso',
+                        'text-blue': i.tipo === 'Desvio'
+                      }">{{ i.tipo }}</span>
+                    </td>
+                    <td>{{ i.descripcion }}</td>
+                    <td>
+                      <span class="badge badge-planned">{{ i.estado }}</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="incidencias.length === 0">
+                    <td colspan="5" class="empty-msg">No se han registrado incidencias.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </app-layout>

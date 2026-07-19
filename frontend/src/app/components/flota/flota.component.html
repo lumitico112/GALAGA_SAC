@@ -1,0 +1,78 @@
+<app-layout>
+        <header class="content-header">
+          <div>
+            <h1>Flota Vehicular</h1>
+            <p class="subtitle">Administración y control de disponibilidad de unidades de transporte</p>
+          </div>
+        </header>
+
+        <div class="flota-grid">
+          <!-- Register Vehicle Form -->
+          <section class="glass-panel form-section">
+            <h2>Registrar Unidad</h2>
+            <form (ngSubmit)="onRegistrar()" #vehiculoForm="ngForm" class="route-form">
+              <div class="form-group">
+                <label for="placa">Placa</label>
+                <input type="text" id="placa" name="placa" [(ngModel)]="placa" required placeholder="Ej. ABC-123" pattern="^[A-Z0-9]{3}-[A-Z0-9]{3,4}$" #placaInput="ngModel">
+                <div *ngIf="placaInput.invalid && (placaInput.dirty || placaInput.touched)" class="warning-text">
+                  Formato de placa inválido (ej. ABC-123).
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="tipo">Tipo de Unidad</label>
+                <input type="text" id="tipo" name="tipo" [(ngModel)]="tipo" required placeholder="Ej. Furgón Cerrado 10m³">
+              </div>
+
+              <div class="form-group">
+                <label for="capacidad">Capacidad (m³)</label>
+                <input type="number" id="capacidad" name="capacidad" [(ngModel)]="capacidad" required min="1" placeholder="Ej. 15.5">
+              </div>
+
+              <div class="form-group">
+                <label for="gps">ID Dispositivo GPS</label>
+                <input type="text" id="gps" name="gps" [(ngModel)]="gps" placeholder="Ej. GPS-UNIT-109">
+              </div>
+
+              <button type="submit" [disabled]="vehiculoForm.invalid" class="btn-primary w-full">
+                Registrar Vehículo
+              </button>
+            </form>
+          </section>
+
+          <!-- Vehicle List -->
+          <section class="glass-panel list-section">
+            <h2>Unidades de la Flota</h2>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Placa</th>
+                    <th>Tipo</th>
+                    <th>Capacidad</th>
+                    <th>GPS ID</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let v of vehiculos">
+                    <td><strong>{{ v.placa }}</strong></td>
+                    <td>{{ v.tipo }}</td>
+                    <td>{{ v.capacidad }} m³</td>
+                    <td>{{ v.gps || 'Ninguno' }}</td>
+                    <td>
+                      <span class="badge" [ngClass]="{
+                        'badge-available': v.estado === 'Disponible',
+                        'badge-busy': v.estado === 'Ocupado'
+                      }">{{ v.estado }}</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="vehiculos.length === 0">
+                    <td colspan="5" class="empty-msg">No hay vehículos registrados.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </app-layout>

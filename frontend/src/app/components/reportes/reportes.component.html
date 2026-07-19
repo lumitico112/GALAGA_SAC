@@ -1,0 +1,96 @@
+<app-layout>
+      <header class="content-header">
+        <div>
+          <h1>Reportes y Consultas Históricas</h1>
+          <p class="subtitle">Análisis del cumplimiento de plazos y volumen transportado</p>
+        </div>
+      </header>
+
+      <!-- Resumen KPIs -->
+      <section class="dashboard-grid" style="margin-bottom: 2rem;">
+        <div class="glass-card kpi-card">
+          <div class="kpi-icon icon-blue">📦</div>
+          <div>
+            <h3>{{ totalMaterialesEntregados }}</h3>
+            <p>Volumen Total Transportado</p>
+          </div>
+        </div>
+        <div class="glass-card kpi-card">
+          <div class="kpi-icon icon-green">✓</div>
+          <div>
+            <h3>{{ porcentajeCumplimiento }}%</h3>
+            <p>Cumplimiento de Entregas</p>
+          </div>
+        </div>
+        <div class="glass-card kpi-card">
+          <div class="kpi-icon icon-yellow">📄</div>
+          <div>
+            <h3>{{ totalContratosActivos }}</h3>
+            <p>Contratos Activos</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filtros -->
+      <section class="glass-panel" style="padding: 1.5rem; margin-bottom: 2rem;">
+        <div class="filters-container">
+          <div class="form-group">
+            <label>Filtrar por Estado de Ruta</label>
+            <select [(ngModel)]="filtroEstado" (change)="aplicarFiltros()">
+              <option value="ALL">Todos los Estados</option>
+              <option value="Entregado">Entregado</option>
+              <option value="En Tránsito">En Tránsito</option>
+              <option value="Planificada">Planificada</option>
+              <option value="Con Incidencia">Con Incidencia</option>
+              <option value="Cancelada">Cancelada</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Buscar Destino</label>
+            <input type="text" [(ngModel)]="filtroDestino" (keyup)="aplicarFiltros()" placeholder="Buscar por destino...">
+          </div>
+          <button (click)="exportarCSV()" class="btn-primary" style="align-self: flex-end; margin-bottom: 0.2rem;">
+            Exportar a CSV
+          </button>
+        </div>
+      </section>
+
+      <!-- Tabla de Reporte Histórico -->
+      <section class="glass-panel" style="padding: 1.5rem;">
+        <h2>Historial de Rutas</h2>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID Ruta</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Fecha Llegada</th>
+                <th>Estado</th>
+                <th>Conductor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of rutasFiltradas">
+                <td>#{{ r.idRuta }}</td>
+                <td>{{ r.origen }}</td>
+                <td>{{ r.destino }}</td>
+                <td>{{ r.fechaLlegada ? (r.fechaLlegada | date:'short') : 'Pendiente' }}</td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                    'badge-available': r.estado === 'Entregado',
+                    'badge-busy': r.estado === 'En Tránsito',
+                    'badge-planned': r.estado === 'Planificada',
+                    'badge-danger': r.estado === 'Con Incidencia' || r.estado === 'Cancelada'
+                  }">{{ r.estado }}</span>
+                </td>
+                <td>{{ r.conductor?.nombre }}</td>
+              </tr>
+              <tr *ngIf="rutasFiltradas.length === 0">
+                <td colspan="6" class="empty-msg">No se encontraron resultados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </app-layout>

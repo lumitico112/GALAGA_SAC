@@ -1,0 +1,110 @@
+<app-layout>
+      <header class="content-header">
+        <div>
+          <h1>Gestión de Contratos</h1>
+          <p class="subtitle">Administración de contratos de servicio con ONPE</p>
+        </div>
+      </header>
+
+      <div class="grid-layout">
+        <!-- Form to Add/Edit Contrato -->
+        <section class="glass-panel form-section">
+          <h2>{{ editMode ? 'Editar Contrato' : 'Registrar Nuevo Contrato' }}</h2>
+          <form (ngSubmit)="onSave()" #contratoForm="ngForm" class="data-form">
+            
+            <div class="form-group">
+              <label for="cliente">Cliente</label>
+              <input type="text" id="cliente" name="cliente" [(ngModel)]="currentContrato.cliente" required placeholder="Ej. ONPE">
+            </div>
+
+            <div class="form-group">
+              <label for="servicio">Descripción del Servicio</label>
+              <input type="text" id="servicio" name="servicio" [(ngModel)]="currentContrato.servicio" required placeholder="Traslado de material electoral">
+            </div>
+
+            <div class="form-group">
+              <label for="fechaInicio">Fecha de Inicio</label>
+              <input type="date" id="fechaInicio" name="fechaInicio" [(ngModel)]="currentContrato.fechaInicio" required>
+            </div>
+
+            <div class="form-group">
+              <label for="fechaFin">Fecha de Fin</label>
+              <input type="date" id="fechaFin" name="fechaFin" [(ngModel)]="currentContrato.fechaFin" required>
+            </div>
+
+            <div class="form-group">
+              <label for="monto">Monto (S/)</label>
+              <input type="number" id="monto" name="monto" [(ngModel)]="currentContrato.monto" required min="0" step="0.01">
+            </div>
+
+            <div class="form-group" *ngIf="editMode">
+              <label for="estado">Estado</label>
+              <select id="estado" name="estado" [(ngModel)]="currentContrato.estado" required>
+                <option value="Activo">Activo</option>
+                <option value="Finalizado">Finalizado</option>
+                <option value="Cancelado">Cancelado</option>
+              </select>
+            </div>
+
+            <div *ngIf="errorMessage" class="error-alert">
+              {{ errorMessage }}
+            </div>
+            <div *ngIf="successMessage" class="success-alert">
+              {{ successMessage }}
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" [disabled]="contratoForm.invalid" class="btn-primary w-full">
+                {{ editMode ? 'Actualizar Contrato' : 'Registrar Contrato' }}
+              </button>
+              <button type="button" *ngIf="editMode" (click)="resetForm()" class="btn-secondary w-full mt-2">
+                Cancelar Edición
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- List of Contratos -->
+        <section class="glass-panel list-section">
+          <h2>Contratos Registrados</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cliente</th>
+                  <th>Servicio</th>
+                  <th>Fechas</th>
+                  <th>Monto</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let c of contratos">
+                  <td>#{{ c.idContrato }}</td>
+                  <td>{{ c.cliente }}</td>
+                  <td>{{ c.servicio }}</td>
+                  <td>{{ c.fechaInicio }} a {{ c.fechaFin }}</td>
+                  <td>S/ {{ c.monto | number:'1.2-2' }}</td>
+                  <td>
+                    <span class="badge" [ngClass]="{
+                      'badge-active': c.estado === 'Activo',
+                      'badge-ended': c.estado === 'Finalizado',
+                      'badge-cancelled': c.estado === 'Cancelado'
+                    }">{{ c.estado }}</span>
+                  </td>
+                  <td>
+                    <button (click)="onEdit(c)" class="btn-action">Editar</button>
+                    <button (click)="onDelete(c.idContrato!)" class="btn-danger ml-2">Eliminar</button>
+                  </td>
+                </tr>
+                <tr *ngIf="contratos.length === 0">
+                  <td colspan="7" class="empty-msg">No hay contratos registrados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </app-layout>

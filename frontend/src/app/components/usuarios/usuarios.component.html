@@ -1,0 +1,99 @@
+<app-layout>
+      <header class="content-header">
+        <div>
+          <h1>Gestión de Usuarios</h1>
+          <p class="subtitle">Administración de accesos y roles del sistema</p>
+        </div>
+      </header>
+
+      <div class="grid-layout">
+        <!-- Form to Add/Edit User -->
+        <section class="glass-panel form-section">
+          <h2>{{ editMode ? 'Editar Usuario' : 'Registrar Nuevo Usuario' }}</h2>
+          <form (ngSubmit)="onSave()" #usuarioForm="ngForm" class="data-form">
+            <div class="form-group">
+              <label for="nombre">Nombre Completo</label>
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="currentUsuario.nombre" required placeholder="Ej. Juan Pérez">
+            </div>
+
+            <div class="form-group">
+              <label for="correo">Correo Electrónico</label>
+              <input type="email" id="correo" name="correo" [(ngModel)]="currentUsuario.correo" required placeholder="Ej. jperez@galaga.com">
+            </div>
+
+            <div class="form-group">
+              <label for="rol">Rol del Sistema</label>
+              <select id="rol" name="rol" [(ngModel)]="currentUsuario.rol" required>
+                <option value="" disabled selected>Seleccione un rol...</option>
+                <option value="ADMIN">Administrador</option>
+                <option value="COORDINADOR">Coordinador Logístico</option>
+                <option value="SUPERVISOR">Supervisor de Flota</option>
+                <option value="CONDUCTOR">Conductor</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contrasena">Contraseña {{ editMode ? '(Opcional)' : '' }}</label>
+              <input type="password" id="contrasena" name="contrasena" [(ngModel)]="currentUsuario.contrasena" 
+                     [required]="!editMode" placeholder="****">
+            </div>
+
+            <div *ngIf="errorMessage" class="error-alert">
+              {{ errorMessage }}
+            </div>
+            <div *ngIf="successMessage" class="success-alert">
+              {{ successMessage }}
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" [disabled]="usuarioForm.invalid" class="btn-primary w-full">
+                {{ editMode ? 'Actualizar Usuario' : 'Registrar Usuario' }}
+              </button>
+              <button type="button" *ngIf="editMode" (click)="resetForm()" class="btn-secondary w-full mt-2">
+                Cancelar Edición
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- List of Users -->
+        <section class="glass-panel list-section">
+          <h2>Usuarios Registrados</h2>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Rol</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of usuarios">
+                  <td>#{{ u.idUsuario }}</td>
+                  <td>{{ u.nombre }}</td>
+                  <td>{{ u.correo }}</td>
+                  <td>
+                    <span class="badge" [ngClass]="{
+                      'badge-admin': u.rol === 'ADMIN',
+                      'badge-coord': u.rol === 'COORDINADOR',
+                      'badge-super': u.rol === 'SUPERVISOR',
+                      'badge-cond': u.rol === 'CONDUCTOR'
+                    }">{{ u.rol }}</span>
+                  </td>
+                  <td>
+                    <button (click)="onEdit(u)" class="btn-action">Editar</button>
+                    <button (click)="onDelete(u.idUsuario!)" class="btn-danger ml-2">Eliminar</button>
+                  </td>
+                </tr>
+                <tr *ngIf="usuarios.length === 0">
+                  <td colspan="5" class="empty-msg">No hay usuarios registrados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </app-layout>

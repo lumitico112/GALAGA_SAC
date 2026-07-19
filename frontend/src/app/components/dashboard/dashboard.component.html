@@ -1,0 +1,90 @@
+<app-layout>
+      <header class="content-header">
+        <div>
+          <h1>Dashboard Operativo</h1>
+          <p class="subtitle">Monitoreo y despacho de material electoral en tiempo real</p>
+        </div>
+      </header>
+
+      <!-- KPI Cards Grid -->
+        <section class="dashboard-grid">
+          <div class="glass-card kpi-card">
+            <div class="kpi-icon icon-blue">🗺️</div>
+            <div>
+              <h3>{{ totalRutas }}</h3>
+              <p>Rutas Registradas</p>
+            </div>
+          </div>
+          <div class="glass-card kpi-card">
+            <div class="kpi-icon icon-yellow">🚛</div>
+            <div>
+              <h3>{{ rutasEnTransito }}</h3>
+              <p>Rutas en Tránsito</p>
+            </div>
+          </div>
+          <div class="glass-card kpi-card">
+            <div class="kpi-icon icon-green">✓</div>
+            <div>
+              <h3>{{ entregasConfirmadas }}</h3>
+              <p>Entregas Exitosas</p>
+            </div>
+          </div>
+          <div class="glass-card kpi-card">
+            <div class="kpi-icon icon-red">⚠️</div>
+            <div>
+              <h3>{{ incidenciasReportadas }}</h3>
+              <p>Incidencias Activas</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Map & Active Routes Layout -->
+        <div class="dashboard-layout">
+          <!-- Live Map Section -->
+          <section class="glass-panel map-section">
+            <div class="section-title">
+              <h2>Mapa de Seguimiento en Tiempo Real</h2>
+              <span class="live-indicator"><span class="dot"></span> LIVE</span>
+            </div>
+            <div id="map" class="map-container"></div>
+          </section>
+
+          <!-- Recent Routes Section -->
+          <section class="glass-panel routes-section">
+            <div class="section-title">
+              <h2>Rutas Recientes</h2>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ruta ID</th>
+                    <th>Destino</th>
+                    <th>Conductor</th>
+                    <th>Vehículo</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let r of rutasRecientes">
+                    <td>#{{ r.idRuta }}</td>
+                    <td>{{ r.destino }}</td>
+                    <td>{{ r.conductor?.nombre }}</td>
+                    <td>{{ r.vehiculo?.placa }}</td>
+                    <td>
+                      <span class="badge" [ngClass]="{
+                        'badge-available': r.estado === 'Entregado',
+                        'badge-busy': r.estado === 'En Tránsito',
+                        'badge-planned': r.estado === 'Planificada'
+                      }">{{ r.estado }}</span>
+                    </td>
+                  </tr>
+                  <tr *ngIf="rutasRecientes.length === 0">
+                    <td colspan="5" class="empty-msg">No hay rutas planificadas en el sistema.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+    </app-layout>

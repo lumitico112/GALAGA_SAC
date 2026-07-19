@@ -1,0 +1,115 @@
+<app-layout>
+  <header class="content-header">
+    <div>
+      <h1>Planificación de Rutas</h1>
+      <p class="subtitle">Asignación de unidades y conductores para el traslado de material electoral</p>
+    </div>
+  </header>
+
+    <div class="rutas-grid">
+      <!-- Form to Plan Route -->
+      <section class="glass-panel form-section">
+        <h2>Planificar Nueva Ruta</h2>
+        <form (ngSubmit)="onPlanificar()" #rutaForm="ngForm" class="route-form">
+          <div class="form-group">
+            <label for="origen">Origen</label>
+            <input type="text" id="origen" name="origen" [(ngModel)]="origen" required placeholder="Ej. Almacén Lurín">
+          </div>
+
+          <div class="form-group">
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" name="destino" [(ngModel)]="destino" required placeholder="Ej. ODPE Lima Centro">
+          </div>
+
+          <div class="form-group">
+            <label for="conductor">Conductor (Disponible)</label>
+            <select id="conductor" name="conductor" [(ngModel)]="selectedConductorId" required>
+              <option value="" disabled selected>Seleccione un conductor...</option>
+              <option *ngFor="let c of conductoresDisponibles" [value]="c.idConductor">
+                {{ c.nombre }} (Lic. {{ c.licencia }})
+              </option>
+            </select>
+            <p *ngIf="conductoresDisponibles.length === 0" class="warning-text">No hay conductores disponibles.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="vehiculo">Vehículo (Disponible)</label>
+            <select id="vehiculo" name="vehiculo" [(ngModel)]="selectedVehiculoId" required>
+              <option value="" disabled selected>Seleccione un vehículo...</option>
+              <option *ngFor="let v of vehiculosDisponibles" [value]="v.idVehiculo">
+                {{ v.tipo }} - {{ v.placa }} (Cap. {{ v.capacidad }} m³)
+              </option>
+            </select>
+            <p *ngIf="vehiculosDisponibles.length === 0" class="warning-text">No hay vehículos disponibles.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="operador">Operador Responsable</label>
+            <select id="operador" name="operador" [(ngModel)]="selectedOperadorId" required>
+              <option value="" disabled selected>Seleccione un operador...</option>
+              <option *ngFor="let o of operadores" [value]="o.idOperador">
+                {{ o.nombre }}
+              </option>
+            </select>
+          </div>
+
+          <div *ngIf="errorMessage" class="error-alert">
+            {{ errorMessage }}
+          </div>
+          <div *ngIf="successMessage" class="success-alert">
+            {{ successMessage }}
+          </div>
+
+          <button type="submit" [disabled]="rutaForm.invalid" class="btn-primary w-full">
+            Planificar y Despachar Ruta
+          </button>
+        </form>
+      </section>
+
+      <!-- List of Routes -->
+      <section class="glass-panel list-section">
+        <h2>Rutas Registradas</h2>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Conductor</th>
+                <th>Vehículo</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of rutas">
+                <td>#{{ r.idRuta }}</td>
+                <td>{{ r.origen }}</td>
+                <td>{{ r.destino }}</td>
+                <td>{{ r.conductor?.nombre }}</td>
+                <td>{{ r.vehiculo?.placa }}</td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                    'badge-available': r.estado === 'Entregado',
+                    'badge-busy': r.estado === 'En Tránsito',
+                    'badge-planned': r.estado === 'Planificada',
+                    'badge-danger': r.estado === 'Con Incidencia'
+                  }">{{ r.estado }}</span>
+                </td>
+                <td>
+                  <button *ngIf="r.estado === 'Planificada'" (click)="onIniciarTransito(r.idRuta)" class="btn-action">
+                    Iniciar Tránsito
+                  </button>
+                  <span *ngIf="r.estado !== 'Planificada'">-</span>
+                </td>
+              </tr>
+              <tr *ngIf="rutas.length === 0">
+                <td colspan="7" class="empty-msg">No hay rutas registradas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+</app-layout>

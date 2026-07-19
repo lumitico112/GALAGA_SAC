@@ -1,0 +1,88 @@
+<app-layout>
+      <header class="content-header">
+        <div>
+          <h1>Gestión de Mantenimientos</h1>
+          <p class="subtitle">Control y registro de mantenimientos de la flota vehicular</p>
+        </div>
+      </header>
+
+      <div class="grid-layout">
+        <section class="glass-panel form-section">
+          <h2>Registrar Mantenimiento</h2>
+          <form (ngSubmit)="onSave()" #form="ngForm" class="data-form">
+            <div class="form-group">
+              <label>Vehículo</label>
+              <select [(ngModel)]="current.vehiculoId" name="vehiculoId" required>
+                <option value="" disabled selected>Seleccione un vehículo...</option>
+                <option *ngFor="let v of vehiculos" [value]="v.idVehiculo">{{ v.placa }} - {{ v.tipo }}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Tipo de Mantenimiento</label>
+              <select [(ngModel)]="current.tipo" name="tipo" required>
+                <option value="Preventivo">Preventivo</option>
+                <option value="Correctivo">Correctivo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Fecha</label>
+              <input type="date" [(ngModel)]="current.fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+              <label>Descripción</label>
+              <textarea [(ngModel)]="current.descripcion" name="descripcion" required rows="3" placeholder="Detalles de la revisión o reparación..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Costo Estimado (S/)</label>
+              <input type="number" [(ngModel)]="current.costo" name="costo" required min="0" step="0.01">
+            </div>
+
+            <div *ngIf="errorMessage" class="error-alert">{{ errorMessage }}</div>
+            <div *ngIf="successMessage" class="success-alert">{{ successMessage }}</div>
+
+            <button type="submit" [disabled]="form.invalid" class="btn-primary w-full" style="margin-top: 1rem;">
+              Registrar Mantenimiento
+            </button>
+          </form>
+        </section>
+
+        <section class="glass-panel list-section">
+          <h2>Historial por Vehículo</h2>
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label>Filtrar historial del vehículo:</label>
+            <select [(ngModel)]="filtroVehiculo" (change)="loadMantenimientos(filtroVehiculo)">
+              <option value="">Seleccione un vehículo...</option>
+              <option *ngFor="let v of vehiculos" [value]="v.idVehiculo">{{ v.placa }}</option>
+            </select>
+          </div>
+          
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Tipo</th>
+                  <th>Descripción</th>
+                  <th>Costo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let m of mantenimientos">
+                  <td>{{ m.fecha }}</td>
+                  <td>
+                    <span class="badge" [ngClass]="{'badge-prev': m.tipo === 'Preventivo', 'badge-corr': m.tipo === 'Correctivo'}">
+                      {{ m.tipo }}
+                    </span>
+                  </td>
+                  <td>{{ m.descripcion }}</td>
+                  <td>S/ {{ m.costo | number:'1.2-2' }}</td>
+                </tr>
+                <tr *ngIf="mantenimientos.length === 0">
+                  <td colspan="4" class="empty-msg">Seleccione un vehículo con historial de mantenimientos.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </app-layout>

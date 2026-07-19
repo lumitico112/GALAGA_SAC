@@ -1,0 +1,46 @@
+<div class="login-container">
+      <div class="glass-panel login-card">
+        <div class="brand">
+          <div class="brand-logo">G</div>
+          <h1>GALAGA S.A.C.</h1>
+          <p class="subtitle">Gestión Logística Electoral ONPE</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form">
+          <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input 
+              type="email" 
+              id="correo" 
+              name="correo" 
+              [(ngModel)]="correo" 
+              required 
+              email
+              #emailInput="ngModel"
+              placeholder="nombre@correo.com">
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-msg">
+              Por favor ingresa un correo válido.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input 
+              type="password" 
+              id="contrasena" 
+              name="contrasena" 
+              [(ngModel)]="contrasena" 
+              required
+              placeholder="••••••••">
+          </div>
+
+          <div *ngIf="error" class="error-alert">
+            {{ error }}
+          </div>
+
+          <button type="submit" [disabled]="loginForm.invalid || loading" class="btn-primary w-full">
+            {{ loading ? 'Iniciando Sesión...' : 'Iniciar Sesión' }}
+          </button>
+        </form>
+      </div>
+    </div>

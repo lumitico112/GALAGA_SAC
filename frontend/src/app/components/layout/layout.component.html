@@ -1,0 +1,61 @@
+<div class="app-layout">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar glass-panel">
+        <div class="sidebar-brand">
+          <span class="logo">G</span>
+          <h2>GALAGA</h2>
+        </div>
+        <nav class="sidebar-menu">
+          <a routerLink="/dashboard" routerLinkActive="active" class="menu-item">
+            <span class="icon">📊</span> Dashboard
+          </a>
+          <a routerLink="/reportes" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR'])">
+            <span class="icon">📈</span> Reportes
+          </a>
+          <a routerLink="/usuarios" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN'])">
+            <span class="icon">👥</span> Usuarios
+          </a>
+          <a routerLink="/contratos" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR'])">
+            <span class="icon">📄</span> Contratos ONPE
+          </a>
+          <a routerLink="/mantenimientos" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'SUPERVISOR'])">
+            <span class="icon">🔧</span> Mantenimientos
+          </a>
+          <a routerLink="/rutas" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR'])">
+            <span class="icon">🗺️</span> Planificar Rutas
+          </a>
+          <a routerLink="/flota" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR', 'SUPERVISOR'])">
+            <span class="icon">🚛</span> Flota Vehicular
+          </a>
+          <a routerLink="/conductores" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR'])">
+            <span class="icon">👥</span> Conductores
+          </a>
+          <a routerLink="/incidencias" routerLinkActive="active" class="menu-item">
+            <span class="icon">⚠️</span> Incidencias
+          </a>
+          <a routerLink="/entrega" routerLinkActive="active" class="menu-item"
+             *ngIf="hasRole(['ADMIN', 'COORDINADOR', 'CONDUCTOR'])">
+            <span class="icon">✓</span> Registrar Entrega
+          </a>
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-info">
+            <div class="user-name">{{ userName }}</div>
+            <div class="user-role">{{ userRole }}</div>
+          </div>
+          <button (click)="onLogout()" class="btn-logout">Cerrar Sesión ➔</button>
+        </div>
+      </aside>
+
+      <!-- Main Panel Content -->
+      <main class="main-content">
+        <ng-content></ng-content>
+      </main>
+    </div>
