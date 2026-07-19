@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+postgresql-18.4-2-windows-x64.exe
