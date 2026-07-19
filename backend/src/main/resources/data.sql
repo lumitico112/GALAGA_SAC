@@ -10,12 +10,7 @@ TRUNCATE TABLE vehiculo CASCADE;
 TRUNCATE TABLE conductor CASCADE;
 TRUNCATE TABLE operador CASCADE;
 TRUNCATE TABLE usuario CASCADE;
-
--- Insert Usuarios
-INSERT INTO usuario (nombre, correo, contrasena, rol) VALUES
-('Administrador Galaga', 'admin@galaga.com', '$2a$10$wN./Fp0w0DkG4lFp7qZ9uOg3Z2J8O4Sj2C.7yBq4W5r7I.V4V9Mme', 'ADMIN'),
-('Coordinador Logistico', 'coordinador@galaga.com', '$2a$10$wN./Fp0w0DkG4lFp7qZ9uOg3Z2J8O4Sj2C.7yBq4W5r7I.V4V9Mme', 'COORDINADOR'),
-('Conductor Principal', 'conductor@galaga.com', '$2a$10$wN./Fp0w0DkG4lFp7qZ9uOg3Z2J8O4Sj2C.7yBq4W5r7I.V4V9Mme', 'CONDUCTOR');
+-- Usuarios son creados programáticamente por DataInitializer en el backend para evitar contraseñas hardcodeadas encriptadas de forma incorrecta.
 
 -- Insert Operadores
 INSERT INTO operador (nombre, telefono) VALUES

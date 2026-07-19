@@ -96,8 +96,8 @@ public class IncidenciaEntregaService {
     @Transactional
     public Entrega actualizarEntrega(Long id, Entrega data) {
         Entrega entrega = obtenerEntrega(id);
-        entrega.setEstadoMaterial(data.getEstadoMaterial());
-        entrega.setObservaciones(data.getObservaciones());
+        entrega.setEstado(data.getEstado());
+        entrega.setObservacion(data.getObservacion());
         return entregaRepository.save(entrega);
     }
 

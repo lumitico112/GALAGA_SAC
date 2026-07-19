@@ -6,7 +6,11 @@ spring:
     username: ${DB_USERNAME:galaga_user}
     password: ${DB_PASSWORD:galaga_password}
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: update
     show-sql: true

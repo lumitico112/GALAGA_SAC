@@ -136,7 +136,6 @@ public class LogisticaService {
         mant.setFecha(data.getFecha());
         mant.setDescripcion(data.getDescripcion());
         mant.setCosto(data.getCosto());
-        mant.setEstado(data.getEstado());
         return mantenimientoRepository.save(mant);
     }
 
@@ -281,7 +280,6 @@ public class LogisticaService {
         MaterialElectoral material = obtenerMaterial(id);
         material.setDescripcion(data.getDescripcion());
         material.setCantidad(data.getCantidad());
-        material.setPeso(data.getPeso());
         return materialElectoralRepository.save(material);
     }
 
